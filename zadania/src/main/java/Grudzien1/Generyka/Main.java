@@ -12,6 +12,7 @@ public class Main {
         garage.park(beta);
         garage.unpark(beta);
         System.out.println(garage.toString());
+        System.out.println();
 
         Garage<BMW> garazNaBMW = new Garage<>(betaNowa, betaNowa);
 

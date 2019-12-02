@@ -1,4 +1,4 @@
-package sda.pl.javagda34.pazdziernik13.ZadaniaDomowe.Tablice;
+package pazdziernik13.ZadaniaDomowe.Tablice;
 
 import java.util.Map;
 import java.util.Random;
