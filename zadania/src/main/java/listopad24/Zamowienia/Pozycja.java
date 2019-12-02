@@ -17,9 +17,9 @@ public class Pozycja {
     @Override
     public String toString() {
         return
-                this.nazwaTowaru + "  " +
-                        this.cenaSztuki + "zł " +
-                        this.iloscSztuk + "szt.  " +
+                this.nazwaTowaru + " cena: " +
+                        this.cenaSztuki + "zł/" +
+                        this.iloscSztuk + "szt. cena calkowita:  " +
                         obliczWartosc() + "zł "
                         + "\n";
     }

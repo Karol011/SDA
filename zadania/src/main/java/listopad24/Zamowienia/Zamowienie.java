@@ -34,7 +34,7 @@ public class Zamowienie {
     }
     @Override
     public String toString() {
-        return "Zamowienie:" + "\n" +
+        return "Zamowienie:" + " " +
                 Arrays.toString(pozycje) +
                 "Razem: " + obliczWartosc() + "zł";
     }

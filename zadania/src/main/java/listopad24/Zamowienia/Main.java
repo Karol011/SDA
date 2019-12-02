@@ -17,15 +17,17 @@ public class Main {
 
         Pozycja chleb = new Pozycja("chleb", 1, 2.0);
         Pozycja kapusta = new Pozycja("kapusta", 3, 1.3);
+        Pozycja ziemniaki = new Pozycja("ziemniaki", 1, 0.5);
 
-        Zamowienie zamowienie = new Zamowienie(3);
+        Zamowienie zamowienie = new Zamowienie(4);
 
         zamowienie.dodajPozycje(chleb);
         zamowienie.dodajPozycje(kapusta);
         zamowienie.dodajPozycje(kapusta);
+        zamowienie.dodajPozycje(ziemniaki);
 
         zamowienie.obliczWartosc();
-        zamowienie.toString();
+        System.out.println(zamowienie.toString());
 
     }
 }

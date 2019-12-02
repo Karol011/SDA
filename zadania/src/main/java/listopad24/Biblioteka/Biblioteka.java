@@ -1,7 +1,7 @@
 package listopad24.Biblioteka;
 
 public class Biblioteka {
-Egzemplarz[] egzemplarze;
+    Egzemplarz[] egzemplarze;
 
 
     public void szukajPoTytule(String tytul) {
