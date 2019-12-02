@@ -6,7 +6,6 @@ public class Telefon implements Dzwoni {
     String numerTelefonu;
     int lacznyCzasRozmow;
 
-    Telefon telefon = new Telefon();
     @Override
     public int zadzwon(String numerTelefonu) {
         Random random = new Random();
@@ -24,8 +23,8 @@ public class Telefon implements Dzwoni {
     }
 
     @Override
-    public void zadzwonNaNumerAlarmowy(String numerTelefonu) {
-        zadzwon(this.numerAlarmowy);
+    public void zadzwonNaNumerAlarmowy() {
+        zadzwon("112");
     }
 
 

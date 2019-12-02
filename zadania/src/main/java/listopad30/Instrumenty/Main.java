@@ -4,5 +4,9 @@ import listopad30.Instrumenty.Gitara;
 import listopad30.Instrumenty.Instrumentalny;
 
 public class Main {
-    Instrumentalny gitara = new Gitara();
+    public static void main(String[] args) {
+
+        Instrumentalny gitara = new Gitara();
+        gitara.play();
+    }
 }

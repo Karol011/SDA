@@ -2,20 +2,26 @@ package listopad24.Biblioteka;
 
 public class Biblioteka {
     Egzemplarz[] egzemplarze;
+    Egzemplarz[] szukaneEgzemplarze;
 
+    public Biblioteka(Egzemplarz[] egzemplarze) {
+        this.egzemplarze = egzemplarze;
+    }
 
-    public void szukajPoTytule(String tytul) {
+    public Egzemplarz[] szukajPoTytule(String tytul) {
+        Egzemplarz[] szukaneEgzemplarze = new Egzemplarz[20];
         for (int i = 0; i < egzemplarze.length; i++) {
-            if (egzemplarze[i].tytul.equals(tytul)) {
-                System.out.println(egzemplarze[i].numerEgzemplarza);
+            if (egzemplarze[i].getTytul().equals(tytul)) {
+                egzemplarze[i] = szukaneEgzemplarze[i];
             }
         }
+        return szukaneEgzemplarze;
     }
 
     public void szukajPoAutorze(String imie) {
         for (int i = 0; i < egzemplarze.length; i++) {
-            if (egzemplarze[i].imie.equals(imie)) {
-                System.out.println(egzemplarze[i].numerEgzemplarza);
+            if (egzemplarze[i].getImie().equals(imie)) {
+                System.out.println(egzemplarze[i].getNumerEgzemplarza());
             }
         }
     }

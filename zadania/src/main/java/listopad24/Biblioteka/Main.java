@@ -1,5 +1,7 @@
 package listopad24.Biblioteka;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -19,8 +21,8 @@ public class Main {
         Egzemplarz[] egzemplarze = {e1, e2, e3, e4, e5, e6, e7};
 
 
-        Biblioteka biblioteka = new Biblioteka();
-        biblioteka.szukajPoTytule("Potop");
-        biblioteka.szukajPoAutorze("Sienkiewicz");
+        Biblioteka biblioteka = new Biblioteka(egzemplarze);
+        System.out.println(Arrays.toString(biblioteka.szukajPoTytule("Potop")));
+        //biblioteka.szukajPoAutorze("Sienkiewicz");
     }
 }

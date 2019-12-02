@@ -7,7 +7,7 @@ public class Main {
         MyList<MyList> myList = new MyList<>(5);
         System.out.println();
 
-        //myList.addElement(5);
+       // myList.addElement(9);
 
 
     }
