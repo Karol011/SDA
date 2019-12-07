@@ -136,6 +136,12 @@ int piec = 5;
         return array;
     }           //sortowanie el. tablicy
 
+    static String usunSamogloski(String wyraz) {
+        String  wyrazBezSamoglosek = wyraz.replaceAll("[aeiouy]", "");
+        return wyrazBezSamoglosek;
+    }                                                   //usuwanie samoglosek za pomoca regexu
+
+
     public static void divideText(String text) {
         String splittedText[] = text.split("", 0);
         for (int i = splittedText.length-1; i >= 0; i--) {
