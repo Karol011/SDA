@@ -4,7 +4,7 @@ public class Book {
     String title;
     String isbn;
     int releaseDate;
-    Author[] authors;
+    Author[] authors = new Author[3];
     public int numberOfAuthors;
 
     public Book(String title, String isbn, int releaseDate) {
@@ -30,6 +30,7 @@ public class Book {
                 "title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", releaseDate=" + releaseDate +
+                ", authors=" + getAuthors()+
                 '}';
     }
 

@@ -9,6 +9,14 @@ public class Author {
         this.surName = surName;
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + getName() + '\'' +
+                ", surName='" + getSurName() + '\'' +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
