@@ -84,6 +84,8 @@ public class Main {
                 case "add":
                     add(books);
                     break;
+                default:
+                    System.out.println("wrong command");
             }
 
 

@@ -1,5 +1,7 @@
 package Grudzien1.ZadaniaDomoweObiektyInterfejsy.zadanie5;
 
+import java.util.Arrays;
+
 public class Book {
     String title;
     String isbn;
@@ -30,7 +32,7 @@ public class Book {
                 "title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", releaseDate=" + releaseDate +
-                ", authors=" + getAuthors()+
+                ", authors=" + Arrays.toString(authors)+
                 '}';
     }
 
