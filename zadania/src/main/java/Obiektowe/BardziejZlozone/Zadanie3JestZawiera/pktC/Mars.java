@@ -1,0 +1,4 @@
+package Obiektowe.BardziejZlozone.Zadanie3JestZawiera.pktC;
+
+public class Mars extends Planeta {
+}
