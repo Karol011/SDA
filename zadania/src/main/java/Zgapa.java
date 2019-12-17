@@ -142,6 +142,17 @@ int piec = 5;
     }                                                   //usuwanie samoglosek za pomoca regexu
 
 
+    static void zamianaWyrazuZDuzejLitery(String... args) {
+
+        System.out.println(Arrays.toString(args));
+        char firstLetter;
+        for (int i = 0; i < args.length; i++) {
+            args[i] =args[i].substring(0,1).toUpperCase()+args[i].substring(1);
+            System.out.println(args[i]);
+        }
+
+    }//pierwsze litery upperCasem
+
     public static void divideText(String text) {
         String splittedText[] = text.split("", 0);
         for (int i = splittedText.length-1; i >= 0; i--) {

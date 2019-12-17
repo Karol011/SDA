@@ -11,7 +11,7 @@ public class Regex1 {
         Pattern pattern = Pattern.compile("Ala ma kota");
         Matcher matcher = pattern.matcher("ma");
 
-        System.out.println(matcher);
+        //System.out.println(matcher);
 
 
         String patternik = "\\s\\D[a-m]\\s";
@@ -20,24 +20,24 @@ public class Regex1 {
         System.out.println(nowyString);
 
         System.out.println(usunSamogloski("Ala ma kota"));
-zamianaWyrazuZDuzejLitery("ala","koala");
+        zamianaWyrazuZDuzejLitery("ala", "koala");
     }
 
     static String usunSamogloski(String wyraz) {
-        String  wyrazBezSamoglosek = wyraz.replaceAll("[aeiouy]", "");
+        String wyrazBezSamoglosek = wyraz.replaceAll("[aeiouy]", "");
         return wyrazBezSamoglosek;
     }
 
-static void zamianaWyrazuZDuzejLitery(String... args ) {
+    static void zamianaWyrazuZDuzejLitery(String... args) {
 
         System.out.println(Arrays.toString(args));
+        char firstLetter;
+        for (int i = 0; i < args.length; i++) {
+            args[i] =args[i].substring(0,1).toUpperCase()+args[i].substring(1);
+            System.out.println(args[i]);
+        }
 
-
-}
-
-
-
-
+    }
 
 
 }
