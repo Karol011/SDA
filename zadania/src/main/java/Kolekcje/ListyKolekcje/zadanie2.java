@@ -39,7 +39,8 @@ public class zadanie2 {
         System.out.println("suma:" + suma);
         System.out.println("Srednia:" + (double) (suma / listaIntow.size()));
 
-        List<Integer> kopiaListy = listaIntow;
+        List<Integer> kopiaListy = new ArrayList<>();
+        kopiaListy.addAll(listaIntow);
         Collections.sort(kopiaListy);
         System.out.println("posorotowana kopia:" + kopiaListy);
         System.out.println("mediana: " + obliczMediane(kopiaListy));
