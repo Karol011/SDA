@@ -1,4 +1,4 @@
-package Inne.Date;
+package Inne.Data;
 
 import java.text.SimpleDateFormat;
 

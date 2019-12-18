@@ -1,4 +1,4 @@
-package Inne.Date;
+package Inne.Data;
 
 public class Main {
     public static void main(String[] args) {
