@@ -14,7 +14,7 @@ public class SkorowidzLiter {
     static Map<String, Set<Integer>> skorowidzLiterowy(String tekst) {
         Map<String, Set<Integer>> litery = new HashMap<>();
         Set<Integer> iloscWystapien;
-        String[] tablicaLiter = tekst.toLowerCase().split("");
+        String[] tablicaLiter = tekst.toLowerCase().trim().split("");
 
         for (int i = 0; i < tablicaLiter.length; i++) {
             if (!litery.containsKey(tablicaLiter[i])) {
