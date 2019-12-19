@@ -1,7 +1,6 @@
-package Kolekcje.ListyKolekcje;
+package Kolekcje.ListyZadaniaDomowe;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
