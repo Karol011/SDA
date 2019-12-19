@@ -1,20 +1,38 @@
-package Kolekcje.ListyKolekcje.Diary;
+package Kolekcje.ListyZadaniaDomowe.Diary;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-@AllArgsConstructor
+@Getter
 @Data
-public class Student {
+public class Student implements Comparable{
     List<Double> grades = new ArrayList<>();
     String indexNumber;
     String name;
     String surname;
+
+    public Student(List<Double> grades, String indexNumber, String name, String surname) {
+        this.grades = grades;
+        this.indexNumber = indexNumber;
+        this.name = name;
+        this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "grades=" + getGrades() +
+                ", indexNumber='" + getIndexNumber() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", surname='" + getSurname() + '\'' +
+                '}';
+    }
 
     public  static String askAboutName() {
         System.out.println("Type the name");
@@ -67,5 +85,16 @@ public class Student {
             listOfGradesDouble.add(Double.parseDouble(temp));
         }
         return listOfGradesDouble;
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+       Student that = (Student) o;
+        if (Integer.parseInt(this.getIndexNumber()) > Integer.parseInt(that.getIndexNumber())) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }
