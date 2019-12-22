@@ -13,5 +13,7 @@ public class Company {
     private String cityHeadquarters; // siedziba firmy
     private int employees; // ilość pracowników
     private List<Purchase> purchaseList; // lista zakupów wykonanych przez firmę (co firma kupiła)
+
+
 }
 

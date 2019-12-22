@@ -2,6 +2,7 @@ package LambdyIStrumienie;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -427,7 +428,7 @@ public class Main {
 
         )));
 
-         List<Company> companies = new ArrayList<>(Arrays.asList(
+        List<Company> companies = new ArrayList<>(Arrays.asList(
                 companyFallen,
                 companyPetersWifesCookies,
                 companyTheOffice,
@@ -447,88 +448,161 @@ public class Main {
                 intelGda,
                 intelKij
         ));
+        // System.out.println(zad7(companies).toString());
 
-
-
+        System.out.println(zad9(companies));
 //        System.out.println(companies);
-
 
         // Polecenie 1:
         // Dane to Firmy oraz ich zakupy z miesiąca styczeń/luty 2018.
-
-        // Wszystkie rozwiązania zapisz w oddzielnych metodach statycznych w klasie Main.
-        // 1. Wylistuj (system out println) wszystkie firmy
-        //        company_1_wylistuj(companies);
-
-        // 2. Wylistuj wszystkie firmy które są z Detroit
-        // 3. Wylistuj wszystkie firmy z Londynu, posortuj je po ilości pracowników (rosnąco).
-        // 4. Wylistuj wszystkie firmy z Warszawy. Posortuj je po ilości zakupów (rosnąco) i ilości pracowników (malejąco).
-        // 5. Zwróć firmę z największą ilością pracowników, która pochodzi z Kijowa.
-        // 6. Zwróć firmę z najkrótszą nazwą
-        // 7. Zwróć firmę która nie pochodzi z Kijowa, Londynu i Detroit, która ma najmniej kupionych produktów.
-        // 8. Każdej firmie dodaj po 1 pracowniku, jeśli pochodzi z Kijowa lub Detroit
-        // 9. ** Zwróć MAPĘ w której kluczem jest nazwa firmy, a wartością ilość pracowników w tej firmie (https://howtodoinjava.com/java8/collect-stream-to-map/)
-        // 10.** Zwróć Mapę w której kluczem jest miejscowość a wartością jest LISTA FIRM z tamtej miejscowości (Map<String, List<Company>) (https://stackoverflow.com/questions/24917053/collecting-hashmapstring-liststring-java-8)
-        // 11. Zwróć firmę która dokonała zakupów na największą kwotę
-        //        company_11_zakupy_najwieksze(companies);
-        // 12. Zwróć firmę która kupiła najwięcej produktów za kwotę wyższą niż 10 k
-        //        company_12_zakupy_10k(companies);
-        // 13. *Zwróć miejscowość która wydała najwięcej pieniędzy. Stwórz mapę Map<String, Double> gdzie kluczem jest miejscowość, a wartością jest kwota wydana przez firmy pochodzące z tamtej miejscowości
-        //        company_13_najwiecej_hajsu(companies);
-        // 14. Wypisz firmy które 15 stycznia 2018 kupiły "Network Switch"
-        //        company_14_network(companies);
-        // 15. Znajdź firmę która kupuje najwięcej kawy
-
-        // 16. Wypisz ile łącznie zostało kupionej kawy Arabica w miesiącu styczniu
-        //        company_16_arabica_january(companies);
-        // 17. Wypisz ile łącznie kawy (Arabica i Roubsta) zostało kupionej w dni parzyste.
-        //        company_17_arabica_robusta_even(companies);
-        // 18. Zwróć Mapę (Map<Product, Set<Company>>) w której kluczem jest typ kawy (powinny być dwie, Arabica i Robusta) i wartością są listy firm które kupiły podaną kawę chociaż raz.
-        //        company_18_mapa_kaw(companies);
-        // 19. Zwróć firmę która w styczniu kupiła najwięcej paliwa (ropy)
-        //        company_19_most_oil_january(companies);
-        // 20. Zwróć firmę której proporcja wydanych pieniędzy do ilości pracowników jest najwyższa
-        //        company_20_money_vs_employees(companies);
-        // 21. Zwróć firmę która najwięcej wydaje na artykuły biurowe
-        //        company_21_most_sheeets(companies);
-        // 22. Zwróć firmy posortowane po ilości wydanych pieniędzy na paliwo
-        //        company_22_sort_money(companies);
-        // 23. Zwróć wszystkie produkty które kupione były na kilogramy
-        //        company_23_wszystkie_produkty_na_kilogramy(companies);
-        // 24. Zwróć listę zakupów (obiektów purchase) kupionych przez firmy z Detroit w miesiącu lutym. posortuj je po kwocie.
-        //        company_24_detroit_shopping_in_february(companies);
-        // 25. Zwróć ilość biur które wynajęte były w miesiącu lutym.
-        //        company_25_rent_in_february(companies);
-        // 26. Zwróć Mapę (Map<Company, Integer>). w mapie umieść wpisy Firma - > ilość biur które wynajęły w dowolnym okresie.
-        //        company_26_company_and_offices(companies);
-        // 27. *Wypisz "Nazwa firmy: XYZ, ilość zakupionych telefonów apple: X" dla każdej firmy która kupiła telefon apple. Wypisy powinny być posortowane (na szczycie powinna być firma która kupiła ich najwięcej).
-        //        company_27_apple_lovers(companies);
-        // 28. Znajdź firme która posiada siedzibę w więcej niż jednym mieście. Posortuj firmy po ilości siedzib, wypisz tylko te które mają więcej niż 1 siedzibę.
-        //        company_28_rich_multi_city_companies(companies);
-        // 29. Wypisz ilość kilogramów cukru zużywaną przez "Detroit Bakery"
-        //        company_29_detroit_bakery(companies);
-        // 30. Wypisz wszystkie zakupy firmy "Solwit".
-        //   company_30_solwit_shopping(companies);
-        // 31. Wypisz wszystkie produkty które są tańsze (jednostkowo) niż 3$.
-        // 32. Wypisz ile sprzedano najtańszego produktu
-        // 33. Firma "Take me home" zajmuje się transportem. Na początku działalności kupiła wiele samochodów do użytku. Oblicz ile litrów paliwa (średnio) spalają ich samochody (zakładamy że wszystkie palą benzynę i że tankowane są wszystkie.
-        // 34. Wypisz firmę która zużywa najwięcej kawy
-        // 35. Wypisz firmę która zużywa najwięcej na papier.
-        // 36. Wypisz wszystkie produkty które były kupowane w większych ilościach niż 50 (jednostek/kilogramów)
-        // 37. Wypisz ile każda z firm zużywa na kawę (ile pieniędzy wydaje) (jako wynik zwróć mapę Map<String, Double> gdzie kluczem jest nazwa firmy, wartością jest ilość pieniędzy wydawanej na kawę
-        // 38. Wypisz średnie zużycie kawy na pracownika (wypisz w postaci proporcji. Jeśli firma kupiła 30 kilogramów i ma 20 pracowników to ma 1.5 kg / pracownika [w całości okresu])
-        // 39. Wypisz jaki produkt poza paliwem cieszy się największą popularnością (zwróć go) (find first)
-        // 40. Znajdź produkty które były kupowane zarówno w kilogramach jak i w sztukach
-        // 40. Wymyśl 5 ciekawych zapytań i spróbuj je zrealizować.
-
-
-
-zad1(companies);
     }
 
+    // Wszystkie rozwiązania zapisz w oddzielnych metodach statycznych w klasie Main.
+    // 1. Wylistuj (system out println) wszystkie firmy
+    //        company_1_wylistuj(companies);
     private static void zad1(List companies) {
+        companies.forEach(company -> System.out.println(company));
+    }
+
+    // 2. Wylistuj wszystkie firmy które są z Detroit
+    private static void zad2(List<Company> companies) {
+        companies.stream()
+                .filter(c -> c.getCityHeadquarters().equalsIgnoreCase("Detroit"))
+                .forEach(c -> System.out.println(c));
+    }
+
+    // 3. Wylistuj wszystkie firmy z Londynu, posortuj je po ilości pracowników (rosnąco).
+
+    private static void zad3(List<Company> companies) {
+        List<Company> newList = companies.stream()
+                .filter(company -> company.getCityHeadquarters().equalsIgnoreCase("London"))
+                .collect(Collectors.toList());
+        newList.sort((company1, company2) -> Integer.compare(company1.getEmployees(), company2.getEmployees()));
+        newList.forEach(company -> System.out.println(company));
+    }
+    // 4. Wylistuj wszystkie firmy z Gdanska. Posortuj je po ilości zakupów (rosnąco) i ilości pracowników (malejąco).
+
+    private static void zad4(List<Company> companies) {
+        List<Company> newList = companies.stream()
+                .filter(c -> c.getCityHeadquarters().equalsIgnoreCase("Gdansk"))
+                .collect(Collectors.toList());
+        // newList.sort((company, company2) -> Integer.compare(company.getPurchaseList().size(),company2.getPurchaseList().size()));
+        newList.sort((company1, company2) -> Integer.compare(company2.getEmployees(), company1.getEmployees()));
+        newList.forEach(company -> System.out.println(company));
+    }
+    // 5. Zwróć firmę z największą ilością pracowników, która pochodzi z Kijowa.
+
+    private static Company zad5(List<Company> companies) {
+        List<Company> newList = companies.stream()
+                .filter(c -> c.getCityHeadquarters().equalsIgnoreCase("Kijev"))
+                .collect(Collectors.toList());
+        newList.sort((company1, company2) -> Integer.compare(company2.getEmployees(), company1.getEmployees()));
+        return newList.get(0);
+    }
+
+    // 6. Zwróć firmę z najkrótszą nazwą
+    private static Company zad6(List<Company> companies) {
+        companies.sort(Comparator.comparingInt(c -> c.getCityHeadquarters().length()));
+        return companies.get(0);
+    }
+
+    // 7. Zwróć firmę która nie pochodzi z Kijowa, Londynu i Detroit, która ma najmniej kupionych produktów.
+    private static Company zad7(List<Company> companies) {
+        List<Company> newList = companies.stream()
+                .filter(c -> !c.getCityHeadquarters().equalsIgnoreCase("Detroit"))
+                .filter(c -> !c.getCityHeadquarters().equalsIgnoreCase("Kijev"))
+                .filter(c -> !c.getCityHeadquarters().equalsIgnoreCase("London"))
+                .collect(Collectors.toList());
+        newList.sort(Comparator.comparingInt(company -> company.getPurchaseList().size()));
+
+        return newList.get(0);
+    }
+
+    // 8. Każdej firmie dodaj po 1 pracowniku, jeśli pochodzi z Kijowa lub Detroit
+    private static void zad8(List<Company> companies) {
+        List<Company> list1 = companies.stream()
+                .filter(c -> c.getCityHeadquarters().equalsIgnoreCase("Detroit"))
+                .collect(Collectors.toList());
+        List<Company> list2 = companies.stream()
+                .filter(c -> c.getCityHeadquarters().equalsIgnoreCase("Kijev"))
+                .collect(Collectors.toList());
+        list1.addAll(list2);
+        list1.forEach(c -> c.setEmployees(c.getEmployees() + 1));
+        list1.forEach(c -> System.out.println(c));
 
     }
+
+//todo
+    // 9. ** Zwróć MAPĘ w której kluczem jest nazwa firmy, a wartością ilość pracowników w tej firmie (https://howtodoinjava.com/java8/collect-stream-to-map/)
+    private static Map<String, List<Company>> zad9(List<Company> companies) {
+        Map<String, List<Company>> newMap = companies.stream()
+                .collect(Collectors.groupingBy(Company::getName));
+        return newMap;
+    }
+
+
+    // 10.** Zwróć Mapę w której kluczem jest miejscowość a wartością jest LISTA FIRM z tamtej miejscowości (Map<String, List<Company>) (https://stackoverflow.com/questions/24917053/collecting-hashmapstring-liststring-java-8)
+
+
+    // 11. Zwróć firmę która dokonała zakupów na największą kwotę
+   // private static Company zad11(List<Company> companies) {
+
+ //   }
+
+
+    //        company_11_zakupy_najwieksze(companies);
+    // 12. Zwróć firmę która kupiła najwięcej produktów za kwotę wyższą niż 10 k
+    //        company_12_zakupy_10k(companies);
+    // 13. *Zwróć miejscowość która wydała najwięcej pieniędzy. Stwórz mapę Map<String, Double> gdzie kluczem jest miejscowość, a wartością jest kwota wydana przez firmy pochodzące z tamtej miejscowości
+    //        company_13_najwiecej_hajsu(companies);
+    // 14. Wypisz firmy które 15 stycznia 2018 kupiły "Network Switch"
+    //        company_14_network(companies);
+    // 15. Znajdź firmę która kupuje najwięcej kawy
+
+    // 16. Wypisz ile łącznie zostało kupionej kawy Arabica w miesiącu styczniu
+    //        company_16_arabica_january(companies);
+    // 17. Wypisz ile łącznie kawy (Arabica i Roubsta) zostało kupionej w dni parzyste.
+    //        company_17_arabica_robusta_even(companies);
+    // 18. Zwróć Mapę (Map<Product, Set<Company>>) w której kluczem jest typ kawy (powinny być dwie, Arabica i Robusta) i wartością są listy firm które kupiły podaną kawę chociaż raz.
+    //        company_18_mapa_kaw(companies);
+    // 19. Zwróć firmę która w styczniu kupiła najwięcej paliwa (ropy)
+    //        company_19_most_oil_january(companies);
+    // 20. Zwróć firmę której proporcja wydanych pieniędzy do ilości pracowników jest najwyższa
+    //        company_20_money_vs_employees(companies);
+    // 21. Zwróć firmę która najwięcej wydaje na artykuły biurowe
+    //        company_21_most_sheeets(companies);
+    // 22. Zwróć firmy posortowane po ilości wydanych pieniędzy na paliwo
+    //        company_22_sort_money(companies);
+    // 23. Zwróć wszystkie produkty które kupione były na kilogramy
+    //        company_23_wszystkie_produkty_na_kilogramy(companies);
+    // 24. Zwróć listę zakupów (obiektów purchase) kupionych przez firmy z Detroit w miesiącu lutym. posortuj je po kwocie.
+    //        company_24_detroit_shopping_in_february(companies);
+    // 25. Zwróć ilość biur które wynajęte były w miesiącu lutym.
+    //        company_25_rent_in_february(companies);
+    // 26. Zwróć Mapę (Map<Company, Integer>). w mapie umieść wpisy Firma - > ilość biur które wynajęły w dowolnym okresie.
+    //        company_26_company_and_offices(companies);
+    // 27. *Wypisz "Nazwa firmy: XYZ, ilość zakupionych telefonów apple: X" dla każdej firmy która kupiła telefon apple. Wypisy powinny być posortowane (na szczycie powinna być firma która kupiła ich najwięcej).
+    //        company_27_apple_lovers(companies);
+    // 28. Znajdź firme która posiada siedzibę w więcej niż jednym mieście. Posortuj firmy po ilości siedzib, wypisz tylko te które mają więcej niż 1 siedzibę.
+    //        company_28_rich_multi_city_companies(companies);
+    // 29. Wypisz ilość kilogramów cukru zużywaną przez "Detroit Bakery"
+    //        company_29_detroit_bakery(companies);
+    // 30. Wypisz wszystkie zakupy firmy "Solwit".
+    //   company_30_solwit_shopping(companies);
+    // 31. Wypisz wszystkie produkty które są tańsze (jednostkowo) niż 3$.
+    // 32. Wypisz ile sprzedano najtańszego produktu
+    // 33. Firma "Take me home" zajmuje się transportem. Na początku działalności kupiła wiele samochodów do użytku. Oblicz ile litrów paliwa (średnio) spalają ich samochody (zakładamy że wszystkie palą benzynę i że tankowane są wszystkie.
+    // 34. Wypisz firmę która zużywa najwięcej kawy
+    // 35. Wypisz firmę która zużywa najwięcej na papier.
+    // 36. Wypisz wszystkie produkty które były kupowane w większych ilościach niż 50 (jednostek/kilogramów)
+    // 37. Wypisz ile każda z firm zużywa na kawę (ile pieniędzy wydaje) (jako wynik zwróć mapę Map<String, Double> gdzie kluczem jest nazwa firmy, wartością jest ilość pieniędzy wydawanej na kawę
+    // 38. Wypisz średnie zużycie kawy na pracownika (wypisz w postaci proporcji. Jeśli firma kupiła 30 kilogramów i ma 20 pracowników to ma 1.5 kg / pracownika [w całości okresu])
+    // 39. Wypisz jaki produkt poza paliwem cieszy się największą popularnością (zwróć go) (find first)
+    // 40. Znajdź produkty które były kupowane zarówno w kilogramach jak i w sztukach
+    // 40. Wymyśl 5 ciekawych zapytań i spróbuj je zrealizować.
+
+
+    //  zad1(companies);
 
 
 }
