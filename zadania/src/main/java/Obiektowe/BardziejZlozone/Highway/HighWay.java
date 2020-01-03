@@ -1,14 +1,11 @@
 package Obiektowe.BardziejZlozone.Highway;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
- class HighWay {
+class HighWay {
     private List<VehicleInfo> vehicles = new ArrayList<>();
 
     void vehicleEntry(String registrationNumber, CarType type) throws VehicleAlreadyOnHighwayException {
@@ -38,14 +35,25 @@ import java.util.List;
     void vehicleLeave(String registrationNumber) {
         for (int i = 0; i < vehicles.size(); i++) {
             if (vehicles.get(i).getRegistrationNumber().equalsIgnoreCase(registrationNumber)) {
-                vehicles.remove(vehicles.get(i));
-                LocalDateTime dateOFLeaveing = LocalDateTime.now();
+                // LocalDateTime dateOFLeaveing = LocalDateTime.now();
                 Duration timeOfRidingOnTheHighawy = Duration.between(vehicles.get(i).dateOFEntry, LocalDateTime.now());
                 //todo count how many seconds vehicle was on the highway
-                System.out.println("vehicle " + registrationNumber + " has left the highway and was " + timeOfRidingOnTheHighawy.getSeconds() + " seconds on it");
-                System.out.println("his date of entry:" + vehicles.get(i).dateOFEntry);
-                System.out.println("date of leaving: " + LocalDateTime.now());
+                System.out.println("vehicle " + registrationNumber +
+                        " has left the highway and was " + timeOfRidingOnTheHighawy.getSeconds() + " seconds on it" +
+                        " price to pay for a ride: " + calculatePriceToPay(timeOfRidingOnTheHighawy, vehicles.get(i).carType));
+                vehicles.remove(vehicles.get(i));
             }
+        }
+    }
+
+    double calculatePriceToPay(Duration timeOnTheHighway, CarType carType) {
+        double timeOnHighway = timeOnTheHighway.getSeconds();
+        if (carType.equals(CarType.MOTORCYCLE)) {
+            return timeOnHighway * 1.25;
+        } else if (carType.equals(CarType.CAR)) {
+            return timeOnHighway * 1.5;
+        } else {
+            return timeOnHighway * 1.75;
         }
     }
 

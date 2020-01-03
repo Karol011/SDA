@@ -11,6 +11,13 @@ public class Main {
 
     private static CarType checkCarTypeChoosenByUser(String input) {
         CarType choosenVehicleType;
+        Scanner scanner = new Scanner(System.in);
+        while (!input.equalsIgnoreCase("car") &&        //checking if car type is correct
+                (!input.equalsIgnoreCase("truck") &&
+                        (!input.equalsIgnoreCase("motorcycle")))) {
+            System.out.println("incorrect vehicle type, try again car/truck/motorcycle");
+            input = scanner.nextLine().trim().toUpperCase();
+        }
         if (input.equals("CAR")) {
             choosenVehicleType = CarType.CAR;
         } else if (input.equals("TRUCK")) {
@@ -36,7 +43,7 @@ public class Main {
             if (action.length == 3) { //first case, because only "entry" require 3 parameters
                 highWay.vehicleEntry(action[1], checkCarTypeChoosenByUser(action[2]));
             } else if (action.length == 2) {//second case exit OR check
-                //todo
+
                 if (action[0].equalsIgnoreCase("exit")) {
                     highWay.vehicleLeave(action[1]);
                 }
