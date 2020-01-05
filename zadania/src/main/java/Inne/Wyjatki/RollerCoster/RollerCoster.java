@@ -1,11 +1,11 @@
-package Inne.Wyjatki;
+package Inne.Wyjatki.RollerCoster;
 
 import java.util.Scanner;
 
 public class RollerCoster {
 
 
-    public static void main(String[] args) throws InsufficientHeightException {
+    public static void main(String[] args)  {
       //  try {
             sprawdzCzyMozeJechac(pobierzWzrost());
       //  } catch (InsufficientHeightException e) {
@@ -15,7 +15,7 @@ public class RollerCoster {
     }
 
 
-    static int pobierzWzrost() {
+    private static int pobierzWzrost() {
         int wzrost;
         Scanner scanner = new Scanner(System.in);
         System.out.println("podaj wzrost  ");
@@ -23,7 +23,7 @@ public class RollerCoster {
         return wzrost;
     }
 
-    static void sprawdzCzyMozeJechac(int wzrost) throws InsufficientHeightException {
+    private static void sprawdzCzyMozeJechac(int wzrost) throws InsufficientHeightException {
 
         if (wzrost > 160) {
             System.out.println("mozesz jechac");
