@@ -29,7 +29,6 @@ public class LocalDatePlusMinus10Days {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.YYYY");
         LocalDate localDate = LocalDate.parse(date);
 
-
         System.out.println("plus 10 days " + localDate.plusDays(10).format(formatter));
         System.out.println("minus 10 days " + localDate.plusDays(-10).format(formatter));
 

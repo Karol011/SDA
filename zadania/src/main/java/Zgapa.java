@@ -1,4 +1,3 @@
-package sda.pl.javagda34;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -21,6 +20,7 @@ int piec = 5;
         System.out.println(String.valueOf(liczba)+5);
         System.out.println(Integer.parseInt(liczba)+5);
         System.out.printf("%.2f", 12.45745); //formatowanie doubla
+        System.out.printf("%,d", 123435346); //formatowanie duzego inta
     }
 
     public static void testyNaStringValueOf() {

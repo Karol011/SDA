@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class MyList<E> {
     protected Integer n;
-    protected E[] arrayOfElements;
+    private E[] arrayOfElements;
 
-    public MyList(int n) {
+    MyList(int n) {
         this.arrayOfElements = (E[]) (new Object[n]);
     }
 
@@ -35,7 +35,7 @@ public class MyList<E> {
 
     @Override
     public String toString() {
-        return "MyList{" +                              //TODO petla
+        return "MyList{" +                              //TODO loop
                 "n=" + n +
                 ", arrayOfElements=" + Arrays.toString(arrayOfElements) +
                 '}';
