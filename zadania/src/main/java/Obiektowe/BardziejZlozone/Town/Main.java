@@ -27,6 +27,8 @@ public class Main {
         Citizen Sebek = new Peasant("Sebek");
 
         Citizen[] citizens = {Artur, Ork, Pioter, Karol, Sebek};
+        Town town = new Town(citizens);
+
 
         int peopleThatCanVote = howManyCanVote(citizens);
         Town.whoCanVote(citizens);

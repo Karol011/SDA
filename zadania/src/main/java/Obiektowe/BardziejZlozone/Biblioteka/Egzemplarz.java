@@ -1,5 +1,7 @@
 package Obiektowe.BardziejZlozone.Biblioteka;
 
+import java.util.Arrays;
+
 public abstract class Egzemplarz {
     private String tytul;
     protected int numerEgzemplarza;
@@ -23,6 +25,14 @@ public abstract class Egzemplarz {
 
     public String getImie() {
         return imie;
+    }
+
+    @Override
+    public String toString() {
+        return "Egzemplarz{" +
+                "tytul='" + tytul + '\'' +
+                ", numerEgzemplarza=" + numerEgzemplarza +
+                '}';
     }
 
     public Czlowiek[] getAutorzy() {

@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class Exercise8 {
     public static void main(String[] args) {
-        GenericList values = new GenericList<>();
+        GenericList<Object> values = new GenericList<>();
         values.add(5);
         values.add(88);
         values.add(5);
@@ -19,7 +19,7 @@ public class Exercise8 {
         values.add("siemanko");
         values.add("siemanko");
         values.add(456D);
-        GenericList values2 = new GenericList<>();
+        GenericList<Object> values2 = new GenericList<>();
         values2.add(new Random().nextInt(10));
         values2.add(new Random().nextInt(10));
         values2.add(new Random().nextInt(10));

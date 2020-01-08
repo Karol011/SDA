@@ -3,6 +3,9 @@ package Obiektowe.BardziejZlozone.Town;
 public class Town {
     protected Citizen[] citizens;
 
+    public Town(Citizen[] citizens) {
+        this.citizens = citizens;
+    }
 
     public static void whoCanVote(Citizen[] citizens) {
         for (int i = 0; i < citizens.length; i++) {

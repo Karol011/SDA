@@ -2,7 +2,9 @@ package LambdyIStrumienie;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -449,9 +451,8 @@ public class Main {
                 intelKij
         ));
         // System.out.println(zad7(companies).toString());
-
-        System.out.println(zad9(companies));
-//        System.out.println(companies);
+        // System.out.println(zad11(companies));
+        //  System.out.println(zad9(companies));
 
         // Polecenie 1:
         // Dane to Firmy oraz ich zakupy z miesiąca styczeń/luty 2018.
@@ -534,21 +535,43 @@ public class Main {
 
 //todo
     // 9. ** Zwróć MAPĘ w której kluczem jest nazwa firmy, a wartością ilość pracowników w tej firmie (https://howtodoinjava.com/java8/collect-stream-to-map/)
-    private static Map<String, List<Company>> zad9(List<Company> companies) {
-        Map<String, List<Company>> newMap = companies.stream()
-                .collect(Collectors.groupingBy(Company::getName));
-        return newMap;
-    }
+    //private static Map<String, List<Company>> zad9(List<Company> companies) {
+    // Map<String, List<Company>> newMap = companies.stream()
+    //          .collect(Collectors.groupingBy(Function.identity(),));
+    //  return newMap;
+    //}
 
 
     // 10.** Zwróć Mapę w której kluczem jest miejscowość a wartością jest LISTA FIRM z tamtej miejscowości (Map<String, List<Company>) (https://stackoverflow.com/questions/24917053/collecting-hashmapstring-liststring-java-8)
 
 
     // 11. Zwróć firmę która dokonała zakupów na największą kwotę
-   // private static Company zad11(List<Company> companies) {
+    private static void zad11(List<Company> companies) {
+        Map<Company, Double> map = companies.stream().collect(
+                Collectors.groupingBy(                                 // To Map<Company, Double>
+                        Function.identity(),                               // Key: Company
+                        Collectors.summingDouble(c -> c.getPurchaseList()  // Value: Sum of all purchases
+                                .stream()
+                                .mapToDouble(p -> p.getProduct().getPrice())   // ... of all products and its prices
+                                .sum()                                         // ... as sum
+                        )
+                )
+        );
+      // Company companyWithMostPurchases = map.entrySet().stream()
+        //     .max(c -> c.)
 
- //   }
+    }
 
+
+    private static void zad11a(List<Company> companies) {
+
+        Stream<Double> doubleStream = companies.stream().
+                map(s -> s.getPurchaseList()).flatMap(k -> k.stream().map(j -> j.getProduct().getPrice()));
+        List<Double> collect = doubleStream.mapToDouble(k -> k).boxed().collect(Collectors.toList());
+        Optional<Double> max = collect.stream().max(Double::compareTo);
+        System.out.println(max.get());
+        System.out.println(max.get());
+    }
 
     //        company_11_zakupy_najwieksze(companies);
     // 12. Zwróć firmę która kupiła najwięcej produktów za kwotę wyższą niż 10 k
@@ -561,6 +584,9 @@ public class Main {
 
     // 16. Wypisz ile łącznie zostało kupionej kawy Arabica w miesiącu styczniu
     //        company_16_arabica_january(companies);
+    //private static void zad8(List<Company> companies) {
+    // List<Company> list1 = companies.stream()
+    //           .filter(c -> c.getPurchaseList().stream().filter(c -> c.getProduct().getName().equalsIgnoreCase("coffeA")))
     // 17. Wypisz ile łącznie kawy (Arabica i Roubsta) zostało kupionej w dni parzyste.
     //        company_17_arabica_robusta_even(companies);
     // 18. Zwróć Mapę (Map<Product, Set<Company>>) w której kluczem jest typ kawy (powinny być dwie, Arabica i Robusta) i wartością są listy firm które kupiły podaną kawę chociaż raz.

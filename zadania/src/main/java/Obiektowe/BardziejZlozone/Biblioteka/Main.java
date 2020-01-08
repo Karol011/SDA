@@ -23,6 +23,6 @@ public class Main {
 
         Biblioteka biblioteka = new Biblioteka(egzemplarze);
         System.out.println(Arrays.toString(biblioteka.szukajPoTytule("Potop")));
-        //biblioteka.szukajPoAutorze("Sienkiewicz");
+        biblioteka.szukajPoAutorze("Sienkiewicz");
     }
 }
