@@ -1,6 +1,5 @@
-package Kolekcje.ListyZadaniaDomowe.Diary;
+package Kolekcje.Listy.ListyZadaniaDomowe.Diary;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 

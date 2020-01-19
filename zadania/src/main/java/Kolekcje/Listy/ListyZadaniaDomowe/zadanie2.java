@@ -1,4 +1,4 @@
-package Kolekcje.ListyZadaniaDomowe;
+package Kolekcje.Listy.ListyZadaniaDomowe;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,8 +32,8 @@ public class zadanie2 {
             listaIntow.add(random.nextInt(1000) + 1);
         }
         int suma = 0;
-        for (int i = 0; i < listaIntow.size(); i++) {
-            suma += listaIntow.get(i);
+        for (Integer integer : listaIntow) {
+            suma += integer;
         }
         System.out.println("wylosowane liczby:" + listaIntow);
         System.out.println("suma:" + suma);
@@ -48,7 +48,7 @@ public class zadanie2 {
         System.out.println("Najwiekszy element: " + znajdzNajwiekszy(listaIntow) + " a jego indeks to: " + znajdzIndeksNajwiekszegoElementu(listaIntow));
     }
 
-    static double obliczMediane(List<Integer> lista) {
+    private static double obliczMediane(List<Integer> lista) {
         int polowaListy = lista.size() / 2;
 
         if (lista.size() % 2 != 0) {
@@ -58,7 +58,7 @@ public class zadanie2 {
 
     }
 
-    static int znajdzNajmniejszy(List<Integer> lista) {
+    private static int znajdzNajmniejszy(List<Integer> lista) {
         int minVal = Integer.MAX_VALUE;
         for (int i = 0; i < lista.size(); i++) {
             minVal = minVal > lista.get(i) ? lista.get(i) : minVal;
@@ -66,7 +66,7 @@ public class zadanie2 {
         return minVal;
     }
 
-    static int znajdzNajwiekszy(List<Integer> lista) {
+    private static int znajdzNajwiekszy(List<Integer> lista) {
         int maxVal = Integer.MIN_VALUE;
         int indexMaxVal;
         for (int i = 0; i < lista.size(); i++) {
@@ -75,7 +75,7 @@ public class zadanie2 {
         return maxVal;
     }
 
-    static int znajdzIndeksNajwiekszegoElementu(List<Integer> lista) {
+    private static int znajdzIndeksNajwiekszegoElementu(List<Integer> lista) {
         int indexMaxVal = 0;
         for (int i = 0; i < lista.size(); i++) {
             indexMaxVal = lista.indexOf(znajdzNajwiekszy(lista));

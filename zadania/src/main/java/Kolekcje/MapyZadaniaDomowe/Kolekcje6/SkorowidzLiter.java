@@ -1,4 +1,4 @@
-package Kolekcje.Kolekcje6;
+package Kolekcje.MapyZadaniaDomowe.Kolekcje6;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ public class SkorowidzLiter {
         System.out.println(skorowidzLiterowy(tekst));
     }
 
-    static Map<String, Set<Integer>> skorowidzLiterowy(String tekst) {
+    private static Map<String, Set<Integer>> skorowidzLiterowy(String tekst) {
         Map<String, Set<Integer>> litery = new HashMap<>();
         Set<Integer> iloscWystapien;
         String[] tablicaLiter = tekst.toLowerCase().trim().split("");

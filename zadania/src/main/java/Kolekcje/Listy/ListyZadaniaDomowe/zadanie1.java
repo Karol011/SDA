@@ -1,4 +1,4 @@
-package Kolekcje.ListyZadaniaDomowe;
+package Kolekcje.Listy.ListyZadaniaDomowe;
 
 
 import java.util.*;

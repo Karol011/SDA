@@ -1,6 +1,9 @@
 package LambdyIStrumienie;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -452,8 +455,8 @@ public class Main {
         ));
         // System.out.println(zad7(companies).toString());
         // System.out.println(zad11(companies));
-        //  System.out.println(zad9(companies));
-
+//company_11_zakupy_najwieksze(companies);
+        zad14(companies);
         // Polecenie 1:
         // Dane to Firmy oraz ich zakupy z miesiąca styczeń/luty 2018.
     }
@@ -535,11 +538,13 @@ public class Main {
 
 //todo
     // 9. ** Zwróć MAPĘ w której kluczem jest nazwa firmy, a wartością ilość pracowników w tej firmie (https://howtodoinjava.com/java8/collect-stream-to-map/)
-    //private static Map<String, List<Company>> zad9(List<Company> companies) {
-    // Map<String, List<Company>> newMap = companies.stream()
-    //          .collect(Collectors.groupingBy(Function.identity(),));
-    //  return newMap;
-    //}
+   /* private static Map<String, Integer> zad9(List<Company> companies) {
+     Map<String, Integer> newMap = companies.stream()
+             .collect(Collectors.toMap(Function.identity(),companies.stream()
+             .filter(c -> c.getEmployees())
+             ))
+      return newMap;
+    }*/
 
 
     // 10.** Zwróć Mapę w której kluczem jest miejscowość a wartością jest LISTA FIRM z tamtej miejscowości (Map<String, List<Company>) (https://stackoverflow.com/questions/24917053/collecting-hashmapstring-liststring-java-8)
@@ -552,35 +557,78 @@ public class Main {
                         Function.identity(),                               // Key: Company
                         Collectors.summingDouble(c -> c.getPurchaseList()  // Value: Sum of all purchases
                                 .stream()
-                                .mapToDouble(p -> p.getProduct().getPrice())   // ... of all products and its prices
+                                .mapToDouble(p -> p.getProduct().getPrice() * p.getQuantity())   // ... of all products and its prices
                                 .sum()                                         // ... as sum
                         )
                 )
         );
-      // Company companyWithMostPurchases = map.entrySet().stream()
-        //     .max(c -> c.)
+        // Map<Company, Double> companyWithMostPurchases = map.entrySet().stream()
+        //    .max();
+        for (Map.Entry entry : map.entrySet()) {
+            System.out.println("value: " + entry.getValue());
+        }
 
     }
 
-
-    private static void zad11a(List<Company> companies) {
-
-        Stream<Double> doubleStream = companies.stream().
-                map(s -> s.getPurchaseList()).flatMap(k -> k.stream().map(j -> j.getProduct().getPrice()));
-        List<Double> collect = doubleStream.mapToDouble(k -> k).boxed().collect(Collectors.toList());
-        Optional<Double> max = collect.stream().max(Double::compareTo);
-        System.out.println(max.get());
-        System.out.println(max.get());
+    private static void company_11_zakupy_najwieksze(List<Company> companies) {
+        Optional<Company> firma = companies.stream()
+                .max(Comparator.comparingDouble(
+                        company -> company.getPurchaseList().stream()
+                                .mapToDouble(purchase -> purchase.getQuantity() * purchase.getProduct().getPrice()).sum()));
+        System.out.println(firma);
     }
 
     //        company_11_zakupy_najwieksze(companies);
     // 12. Zwróć firmę która kupiła najwięcej produktów za kwotę wyższą niż 10 k
+
+    private static void zad12(List<Company> companies) {
+
+        Optional<Company> firma = companies.stream()
+                .max(Comparator.comparingDouble(
+                        company -> company.getPurchaseList().stream()
+                                .filter(purchase -> purchase.getProduct().getPrice() > 10000)
+                                .mapToDouble(purchase -> purchase.getQuantity()).sum()
+                ));
+        System.out.println(firma);
+    }
+
     //        company_12_zakupy_10k(companies);
     // 13. *Zwróć miejscowość która wydała najwięcej pieniędzy. Stwórz mapę Map<String, Double> gdzie kluczem jest miejscowość, a wartością jest kwota wydana przez firmy pochodzące z tamtej miejscowości
     //        company_13_najwiecej_hajsu(companies);
+
+
     // 14. Wypisz firmy które 15 stycznia 2018 kupiły "Network Switch"
     //        company_14_network(companies);
+
+    private static void zad14(List<Company> companies) {
+
+        companies.stream()
+                .filter(
+                        company -> company.getPurchaseList()
+                                .stream()
+                                .anyMatch(
+                                        purchase -> purchase.getPurchaseDate().isEqual(LocalDate.of(2018, 1, 15)) &&
+                                                purchase.getProduct()
+                                                        .getName()
+                                                        .equalsIgnoreCase("Network Switch")))
+                .forEach(company -> System.out.println(company.getName() + " " + company.getCityHeadquarters()));
+
+
+    }
+
     // 15. Znajdź firmę która kupuje najwięcej kawy
+
+    private static void zad15(List<Company> companies) {
+
+        /*companies.stream()
+                .filter(company -> company.getPurchaseList().stream()
+                                    .filter(purchase -> purchase.getProduct().getName().equalsIgnoreCase("Coffee, Arabica") &&
+                                            purchase.getProduct().getName().equalsIgnoreCase("Coffee, Robusta")))
+                .forEach(company -> System.out.println(company.getName()));*/
+
+
+    }
+
 
     // 16. Wypisz ile łącznie zostało kupionej kawy Arabica w miesiącu styczniu
     //        company_16_arabica_january(companies);
@@ -591,14 +639,36 @@ public class Main {
     //        company_17_arabica_robusta_even(companies);
     // 18. Zwróć Mapę (Map<Product, Set<Company>>) w której kluczem jest typ kawy (powinny być dwie, Arabica i Robusta) i wartością są listy firm które kupiły podaną kawę chociaż raz.
     //        company_18_mapa_kaw(companies);
+
     // 19. Zwróć firmę która w styczniu kupiła najwięcej paliwa (ropy)
     //        company_19_most_oil_january(companies);
+   /* private static void zad19(List<Company> companies) {
+
+        companies.stream()
+                .filter(company -> company.getPurchaseList().stream()
+                                .filter(purchase -> purchase.getPurchaseDate().getMonth().equals(Month.of(1)))
+                        .forEach(System.out::println)
+
+
+    }*/
+
     // 20. Zwróć firmę której proporcja wydanych pieniędzy do ilości pracowników jest najwyższa
     //        company_20_money_vs_employees(companies);
     // 21. Zwróć firmę która najwięcej wydaje na artykuły biurowe
     //        company_21_most_sheeets(companies);
     // 22. Zwróć firmy posortowane po ilości wydanych pieniędzy na paliwo
     //        company_22_sort_money(companies);
+    private static void zad22(List<Company> companies) {
+
+       /* companies.stream()
+                .filter(company -> company.getPurchaseList().stream()
+                        .filter(purchase -> purchase.getProduct().getName().contains("Fuel")).mapToDouble(Purchase::getPriceOFAllProducts).sum()
+
+
+                ).sorted();*/
+
+
+    }
     // 23. Zwróć wszystkie produkty które kupione były na kilogramy
     //        company_23_wszystkie_produkty_na_kilogramy(companies);
     // 24. Zwróć listę zakupów (obiektów purchase) kupionych przez firmy z Detroit w miesiącu lutym. posortuj je po kwocie.
@@ -615,6 +685,17 @@ public class Main {
     //        company_29_detroit_bakery(companies);
     // 30. Wypisz wszystkie zakupy firmy "Solwit".
     //   company_30_solwit_shopping(companies);
+   /* private static void zad15(List<Company> companies) {
+
+        companies.stream()
+                .filter(company -> company.getName().equalsIgnoreCase("solwit"))
+                .filter(company -> company.getPurchaseList().stream()
+                                .filter(purchase -> purchase.getProduct().getName()))
+
+
+
+    }*/
+
     // 31. Wypisz wszystkie produkty które są tańsze (jednostkowo) niż 3$.
     // 32. Wypisz ile sprzedano najtańszego produktu
     // 33. Firma "Take me home" zajmuje się transportem. Na początku działalności kupiła wiele samochodów do użytku. Oblicz ile litrów paliwa (średnio) spalają ich samochody (zakładamy że wszystkie palą benzynę i że tankowane są wszystkie.

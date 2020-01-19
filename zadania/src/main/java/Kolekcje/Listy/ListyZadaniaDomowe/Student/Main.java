@@ -1,4 +1,4 @@
-package Kolekcje.ListyZadaniaDomowe.Student;
+package Kolekcje.Listy.ListyZadaniaDomowe.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;

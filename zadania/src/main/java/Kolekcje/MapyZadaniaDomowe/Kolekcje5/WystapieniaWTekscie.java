@@ -1,4 +1,4 @@
-package Kolekcje.Kolekcje5;
+package Kolekcje.MapyZadaniaDomowe.Kolekcje5;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class WystapieniaWTekscie {
 
     }
 
-    static Map<String, Integer> zliczWystapieniaSlow(String podanyTekst) {
+    private static Map<String, Integer> zliczWystapieniaSlow(String podanyTekst) {
         Map<String, Integer> slowo = new HashMap<>();
         String[] tablicaSlow = podanyTekst.toLowerCase().split(" ");
 

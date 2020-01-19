@@ -1,4 +1,4 @@
-package Kolekcje.Kolekcje2;
+package Obiektowe.MniejZlozone.Figura;
 
 import java.util.HashSet;
 import java.util.Set;

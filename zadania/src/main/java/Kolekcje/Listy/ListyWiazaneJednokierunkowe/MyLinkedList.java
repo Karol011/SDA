@@ -1,10 +1,10 @@
-package Kolekcje.ListyWiazaneJednokierunkowe;
+package Kolekcje.Listy.ListyWiazaneJednokierunkowe;
 
 public class MyLinkedList {
     private int size;
     private Node head;
 
-    public MyLinkedList() {
+    MyLinkedList() {
         this.size = 0;
     }
 

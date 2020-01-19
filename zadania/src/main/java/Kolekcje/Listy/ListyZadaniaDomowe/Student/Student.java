@@ -1,4 +1,4 @@
-package Kolekcje.ListyZadaniaDomowe.Student;
+package Kolekcje.Listy.ListyZadaniaDomowe.Student;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

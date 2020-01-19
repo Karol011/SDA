@@ -1,9 +1,9 @@
-package Kolekcje.Kolekcje2;
+package Obiektowe.MniejZlozone.Figura;
 
 public class Prostokat extends Figura {
     private double bokB;
 
-    public Prostokat(double bokA, double bokB) {
+    Prostokat(double bokA, double bokB) {
         super(bokA);
         this.bokB = bokB;
     }

@@ -1,4 +1,4 @@
-package Kolekcje.ListyWiazaneJednokierunkowe;
+package Kolekcje.Listy.ListyWiazaneJednokierunkowe;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Kolekcje.ListyZadaniaDomowe;
+package Kolekcje.Listy.ListyZadaniaDomowe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,8 @@ public class zadanie4 {
     private static List<Integer> changeListType(List<String> listToConvert) {
         List<Integer> convertedList = new ArrayList<>();
         String temp;
-        for (int i = 0; i < listToConvert.size(); i++) {
-            temp = listToConvert.get(i);
+        for (String s : listToConvert) {
+            temp = s;
             convertedList.add(Integer.parseInt(temp));
         }
         return convertedList;

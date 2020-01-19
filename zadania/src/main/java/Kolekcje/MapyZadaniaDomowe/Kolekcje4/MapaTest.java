@@ -1,4 +1,4 @@
-package Kolekcje.Kolekcje4;
+package Kolekcje.MapyZadaniaDomowe.Kolekcje4;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

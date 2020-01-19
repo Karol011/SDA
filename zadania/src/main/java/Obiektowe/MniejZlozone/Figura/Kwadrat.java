@@ -1,7 +1,7 @@
-package Kolekcje.Kolekcje2;
+package Obiektowe.MniejZlozone.Figura;
 
 public class Kwadrat extends Prostokat {
-    public Kwadrat(double bokA) {
+    Kwadrat(double bokA) {
         super(bokA, bokA);
     }
 

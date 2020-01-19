@@ -1,7 +1,7 @@
-package Kolekcje.Kolekcje2;
+package Obiektowe.MniejZlozone.Figura;
 
 public abstract class Figura implements Comparable {
-    protected double bokA;
+    double bokA;
 
     public Figura(double bokA) {
         this.bokA = bokA;

@@ -20,7 +20,7 @@ public class Sklep {
         double przekatnaEkranu = wybierzPrzekatnaEkranu();
         String kartaGraficzna = wybierzKarteGraficzna();
         int iluWatowyZasilacz = wybierzIluWatowyZasilacz();
-       // okreslKryteria();
+        okreslKryteria();
 
 
         komputeryWMagazynie.stream()
@@ -40,42 +40,42 @@ public class Sklep {
 
 
 
-    public static String wybierzProcesor() {
+    private static String wybierzProcesor() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("marka procesora? (AMD/INTEL)");
         String markaProcesora = scanner.nextLine();
         return markaProcesora;
     }
 
-    public static int wybierzIloscRdzeni() {
+    private static int wybierzIloscRdzeni() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("ilosc rdzeni?");
         int iloscRdzeni = scanner.nextInt();
         return iloscRdzeni;
     }
 
-    public static double wybierzTaktowanieProcesora() {
+    private static double wybierzTaktowanieProcesora() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("taktowanie procesora?");
         double taktowanie = scanner.nextDouble();
         return taktowanie;
     }
 
-    public static double wybierzPrzekatnaEkranu() {
+    private static double wybierzPrzekatnaEkranu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("przekarna ekranu?");
         double przekatna = scanner.nextDouble();
         return przekatna;
     }
 
-    public static String wybierzKarteGraficzna() {
+    private static String wybierzKarteGraficzna() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("marka karty graficznej? (AMD/NVIDIA)");
         String markaKartyGraficznej = scanner.nextLine();
         return markaKartyGraficznej;
     }
 
-    public static int wybierzIluWatowyZasilacz() {
+    private static int wybierzIluWatowyZasilacz() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("ilosc watow?");
         int iloscWatow = scanner.nextInt();
@@ -83,7 +83,7 @@ public class Sklep {
     }
 
 
-    public static void okreslKryteria() {
+    private static void okreslKryteria() {
         Scanner scanner = new Scanner(System.in);
         String wybierzDzialanie = scanner.nextLine();
         do {

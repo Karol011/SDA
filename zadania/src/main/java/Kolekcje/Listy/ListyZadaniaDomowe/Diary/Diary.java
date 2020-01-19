@@ -1,29 +1,28 @@
-package Kolekcje.ListyZadaniaDomowe.Diary;
+package Kolekcje.Listy.ListyZadaniaDomowe.Diary;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.*;
 
 @Data
-public class Diary {
+class Diary {
 
     List<Student> listOfStudents;
 
 
-    public Diary(List<Student> listOfStudents) {
+    Diary(List<Student> listOfStudents) {
         this.listOfStudents = listOfStudents;
     }
 
-    public void addStudent(Student... student) {
+    void addStudent(Student... student) {
         listOfStudents.addAll(Arrays.asList(student));
     }
 
-    public void removeStudent(Student... student) {
+    void removeStudent(Student... student) {
         listOfStudents.removeAll(Arrays.asList(student));
     }
 
-    public void removeStudent(String indexNumber) {
+    void removeStudent(String indexNumber) {
         for (Student s : listOfStudents) {
             if (s.getIndexNumber() == indexNumber) {
                 listOfStudents.remove(s);
@@ -31,7 +30,7 @@ public class Diary {
         }
     }
 
-    public Student returnStudent(String indexNumber) throws NoSuchElementException {
+    Student returnStudent(String indexNumber) throws NoSuchElementException {
 
         for (Student s : listOfStudents) {
             if (s.getIndexNumber() == indexNumber) {
@@ -43,7 +42,7 @@ public class Diary {
         return listOfStudents.get(0);
     }
 
-    public double averageGrades(String indexNumber) {
+    double averageGrades(String indexNumber) {
         double sum = 0.0;
         double numberOfGrades = 0.0;
         for (Student student : listOfStudents) {
@@ -57,7 +56,7 @@ public class Diary {
         return sum / numberOfGrades;
     }
 
-    public List<Student> endangeredStudents() {
+    List<Student> endangeredStudents() {
         List<Student> listOfEndangeredStudents = new ArrayList<>();
         for (Student student : listOfStudents) {
             if (averageGrades(student.getIndexNumber()) <= 3) {
@@ -67,7 +66,7 @@ public class Diary {
         return listOfEndangeredStudents;
     }
 
-    public List<Student> sortStudentsAfterIndex() {
+    List<Student> sortStudentsAfterIndex() {
         List<Student> sortedDiaryOfStudends = listOfStudents;
        // Collections.copy(listOfStudents, sortedDiaryOfStudends);
         Collections.sort(sortedDiaryOfStudends,Student::compareTo);
