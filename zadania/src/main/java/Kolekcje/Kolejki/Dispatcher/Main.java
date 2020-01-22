@@ -1,6 +1,27 @@
 package Kolekcje.Kolejki.Dispatcher;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
+
+    public static void main(String[] args) {
+        Dispatching dispatching = new Dispatching();
+
+        dispatching.addReport("heeeeelp", ReportType.AMBULANCE);
+        dispatching.addReport("dfdf", ReportType.AMBULANCE);
+        dispatching.addReport("helpiiiii", ReportType.AMBULANCE);
+        dispatching.addReport("poliiiice", ReportType.POLICE);
+        dispatching.addReport("treeee", ReportType.OTHER);
+        dispatching.addReport("treeee", ReportType.OTHER);
+
+        dispatching.showReports();
+
+        dispatching.showMostRecentReport();
+        dispatching.listReportType(ReportType.AMBULANCE);
+    }
+
+
 }
 /*
 Zadanie 3:

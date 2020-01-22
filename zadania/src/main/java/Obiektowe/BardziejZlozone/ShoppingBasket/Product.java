@@ -28,8 +28,11 @@ class Product {
         return netPrice;
     }
 
+    public void setNetPrice(double netPrice) {
+        this.netPrice = netPrice;
+    }
 
-     ProductBill getVat() {
+    ProductBill getVat() {
         return vat;
     }
 

@@ -2,6 +2,7 @@ package Obiektowe.BardziejZlozone.ShoppingBasket;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,6 +27,7 @@ public class Main {
         System.out.printf("total brutto price %.2f \n", check.priceToPayBrutto());
         System.out.printf("price to pay if Vat23 %.2f\n",check.priceToPayIFVat23());
         System.out.printf("price to pay if Vat8 %.2f",check.priceToPayIFVat8());
+
     }
 
 }

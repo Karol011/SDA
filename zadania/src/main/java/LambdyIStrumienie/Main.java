@@ -671,6 +671,16 @@ public class Main {
     }
     // 23. Zwróć wszystkie produkty które kupione były na kilogramy
     //        company_23_wszystkie_produkty_na_kilogramy(companies);
+
+    /*private static void zad23(List<Company> companies) {
+        companies.stream()
+                .filter(c -> c.getPurchaseList().stream()
+                        .filter(purchase -> purchase.getUnit().equals(UNIT.KILOGRAM))
+                        .forEach(purchase -> System.out.println("product "+purchase.getProduct().getName())
+                        )
+
+
+    }*/
     // 24. Zwróć listę zakupów (obiektów purchase) kupionych przez firmy z Detroit w miesiącu lutym. posortuj je po kwocie.
     //        company_24_detroit_shopping_in_february(companies);
     // 25. Zwróć ilość biur które wynajęte były w miesiącu lutym.
