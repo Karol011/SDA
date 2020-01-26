@@ -1,4 +1,4 @@
-package WzorceProjektowe.Builder;
+package WzorceProjektowe.Builder.House;
 
 import java.util.ArrayList;
 import java.util.List;

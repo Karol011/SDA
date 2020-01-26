@@ -1,4 +1,4 @@
-package WzorceProjektowe.Builder;
+package WzorceProjektowe.Builder.House;
 
 public enum RoofType {
     FLAT,
