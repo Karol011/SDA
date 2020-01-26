@@ -1,4 +1,4 @@
-package Inne.ZapisOdczytZPlikow;
+package Inne.ZapisOdczytZPlikow.Zapis;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

@@ -1,0 +1,13 @@
+
+What is your age?
+er
+Do you have a drivers license
+wer
+What is your height?
+rw
+What is your sex? male/female
+34
+How much do you earn?
+df
+Do you smoke?
+sdf
