@@ -7,7 +7,7 @@ public class Tekstowy  {
     public static void main(String[] args) throws FileNotFoundException {
 
             PrintWriter tekstowy = new PrintWriter("C:\\Users\\rudaz\\Desktop\\plik.txt");
-            tekstowy.println("test zapisu");
+            tekstowy.println("Zgapa.test zapisu");
             tekstowy.close();
         }
     }

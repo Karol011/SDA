@@ -2,19 +2,36 @@ package Kolekcje.Stosy.SMS;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        MessageInbox messageInbox = new MessageInbox();
+      /*  MessageInbox messageInbox = new MessageInbox();
         Deque<Message> wiadomosci = new ArrayDeque<>();
         messageInbox.addMessage("ajshda");
         messageInbox.addMessage("duppa");
         messageInbox.addMessage("kanarkiliii");
 
         wiadomosci.add(new Message("sadsad"));
-messageInbox.deleteNewestMessage();
+        messageInbox.deleteNewestMessage();
         //System.out.println(wiadomosci.peek());
-         messageInbox.listMessages();
+        messageInbox.listMessages();*/
+        Map<String, MessageInbox> messageInboxMap = new HashMap<>();
+        Phone phone = new Phone(messageInboxMap);
+        phone.addMessagePhone("karol", "message 1");
+        phone.addMessagePhone("karol", "karmel");
+        phone.addMessagePhone("kamilek", "ciastko");
+
+        phone.listMessages("karol");
+        phone.listMessages("kamilek");
+
+        phone.removeFirstMessageFromContact("karol");
+        phone.removeFirstMessageFromContact("karol");
+        phone.removeFirstMessageFromContact("karol");
+        phone.listMessages("karol");
+
+
     }
 }
 

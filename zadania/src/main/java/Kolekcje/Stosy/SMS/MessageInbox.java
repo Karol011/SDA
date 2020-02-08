@@ -1,13 +1,19 @@
 package Kolekcje.Stosy.SMS;
 
+import lombok.Getter;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
-
+@Getter
 class MessageInbox {
     private Deque<Message> messageInbox;
 
     MessageInbox() {
         this.messageInbox = new ArrayDeque<>();
+    }
+
+    public MessageInbox(Deque<Message> messageInbox) {
+        this.messageInbox = messageInbox;
     }
 
     void addMessage(String messageContent) {
@@ -24,5 +30,12 @@ class MessageInbox {
         messageInbox
                 .forEach(message -> System.out.println(message.toString()));
 
+    }
+
+    @Override
+    public String toString() {
+        return "MessageInbox{" +
+                "messageInbox=" + messageInbox +
+                '}';
     }
 }
