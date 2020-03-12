@@ -3,8 +3,9 @@ package Obiektowe.WorldSimulator.Plant;
 //wilcza jagoda
 public class Belladona extends Plant {
 
-    public Belladona(int[][] worldCoordinates, double chanceToSpread) {
-        super(99, worldCoordinates, chanceToSpread);
+
+    public Belladona(final int worldCoordinateX, final int worldCoordinateY, final double chanceToSpread) {
+        super(99, worldCoordinateX, worldCoordinateY, chanceToSpread);
     }
 
     @Override

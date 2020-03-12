@@ -1,9 +1,11 @@
+/*
 package Obiektowe.WorldSimulator.Animal;
 
 public class Human extends Animal {
 
-    public Human(int[][] worldCoordinates) {
-        super(5, 4, worldCoordinates);
+
+    public Human(final int worldCoordinateX, final int worldCoordinateY) {
+        super(5, 4, worldCoordinateX, worldCoordinateY);
     }
 
     @Override
@@ -21,3 +23,4 @@ public class Human extends Animal {
 
     }
 }
+*/

@@ -1,8 +1,10 @@
+/*
 package Obiektowe.WorldSimulator.Animal;
 
 public class Turtle extends Animal {
-    public Turtle(int[][] worldCoordinates) {
-        super(2, 1, worldCoordinates);
+
+    public Turtle(final int worldCoordinateX, final int worldCoordinateY) {
+        super(2, 1, worldCoordinateX, worldCoordinateY);
     }
 
     @Override
@@ -20,3 +22,4 @@ public class Turtle extends Animal {
 
     }
 }
+*/

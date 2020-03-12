@@ -1,10 +1,11 @@
 package Obiektowe.WorldSimulator.Plant;
+
 //mlecz
-public class SowThistle extends Plant{
+public class SowThistle extends Plant {
 
 
-    public SowThistle(int strength, int[][] worldCoordinates, double chanceToSpread) {
-        super(strength, worldCoordinates, chanceToSpread);
+    public SowThistle(final int strength, final int worldCoordinateX, final int worldCoordinateY, final double chanceToSpread) {
+        super(strength, worldCoordinateX, worldCoordinateY, chanceToSpread);
     }
 
     @Override

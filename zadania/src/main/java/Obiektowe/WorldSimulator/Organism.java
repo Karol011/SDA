@@ -1,18 +1,29 @@
 package Obiektowe.WorldSimulator;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
+@Data
 public abstract class Organism {
-    int strength;
-    int speed;
-    int[][] worldCoordinates;
 
+    protected World world;
+    protected int strength;
+    protected int speed;
+    protected int worldCoordinateX;
+    protected int worldCoordinateY;
+    protected int[][] coordinates;
 
-    public Organism(int strength, int speed, int[][] worldCoordinates) {
+    public Organism(final World world, final int strength, final int speed,
+                    final int worldCoordinateX, final int worldCoordinateY) {
+        this.world = world;
         this.strength = strength;
         this.speed = speed;
-        this.worldCoordinates = worldCoordinates;
+        this.worldCoordinateX = worldCoordinateX;
+        this.worldCoordinateY = worldCoordinateY;
+        this.coordinates = new int[worldCoordinateX][worldCoordinateY];
     }
 
     protected abstract void action();
@@ -20,4 +31,6 @@ public abstract class Organism {
     protected abstract void collision();
 
     protected abstract void draw();
+
+
 }

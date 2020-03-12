@@ -1,21 +1,38 @@
 package Obiektowe.WorldSimulator.Animal;
 
 import Obiektowe.WorldSimulator.Organism;
+import Obiektowe.WorldSimulator.World;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.Random;
+
+@Getter
+@Setter
+@Data
 public abstract class Animal extends Organism {
 
 
-    public Animal(int strength, int speed, int[][] worldCoordinates) {
-        super(strength, speed, worldCoordinates);
+    public Animal(final World world, final int strength, final int speed, final int worldCoordinateX, final int worldCoordinateY) {
+        super(world, strength, speed, worldCoordinateX, worldCoordinateY);
+
     }
 
-
     @Override
-    protected abstract void action();
+    protected void action() {
+    }
 
     @Override
     protected abstract void collision();
 
+    protected abstract void move();
+
     @Override
     protected abstract void draw();
+
+    @Override
+    public String toString() {
+        return "Animal";
+    }
 }

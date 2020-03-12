@@ -3,11 +3,10 @@ package Obiektowe.WorldSimulator.Plant;
 import Obiektowe.WorldSimulator.Organism;
 
 public abstract class Plant extends Organism {
-double chanceToSpread;
+    double chanceToSpread;
 
-
-    public Plant(int strength, int[][] worldCoordinates,double chanceToSpread) {
-        super(strength, 0, worldCoordinates);
+    public Plant(final int strength, final int worldCoordinateX, final int worldCoordinateY, final double chanceToSpread) {
+        super(strength, 0, worldCoordinateX, worldCoordinateY);
         this.chanceToSpread = chanceToSpread;
     }
 

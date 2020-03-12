@@ -1,8 +1,12 @@
+/*
 package Obiektowe.WorldSimulator.Animal;
 
+import Obiektowe.WorldSimulator.World;
+
 public class Antelope extends Animal {
-    public Antelope(int[][] worldCoordinates) {
-        super(4, 4, worldCoordinates);
+
+    public Antelope(final World world, final int strength, final int speed, final int worldCoordinateX, final int worldCoordinateY) {
+        super(world, strength, speed, worldCoordinateX, worldCoordinateY);
     }
 
     @Override
@@ -20,3 +24,4 @@ public class Antelope extends Animal {
 
     }
 }
+*/
