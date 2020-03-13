@@ -9,12 +9,14 @@ public class WorldSimulatorDemo {
 
     public static void main(String[] args) {
         List<Organism> orgasisms = new ArrayList<>();
-        int[][] worldCoordinates = new int[10][10];
-        World world = new World(orgasisms,worldCoordinates);
-        Organism fox = new Fox(5,5);
-        orgasisms.add(fox);
-
+        World world = new World( 10, 10);
+        Organism fox = new Fox(world, 10, 10, 5, 5);
+       // orgasisms.add(fox);
+        world.addOrganismsToWorldMap();
         world.makeTurn();
+        System.out.println(fox.getCoordinates());
+        System.out.println(fox.getWorldCoordinateX());
+        System.out.println(fox.getWorldCoordinateY());
         world.makeTurn();
         world.makeTurn();
         world.makeTurn();

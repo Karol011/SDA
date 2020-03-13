@@ -10,7 +10,10 @@ public class Fox extends Animal {
 
     public Fox(final World world, final int strength, final int speed, final int worldCoordinateX, final int worldCoordinateY) {
         super(world, strength, speed, worldCoordinateX, worldCoordinateY);
+        getWorld().getOrganisms().add(this);
     }
+
+
 
     @Override
     protected void action() {
