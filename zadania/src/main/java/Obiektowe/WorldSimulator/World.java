@@ -4,24 +4,16 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Data
 public class World {
 
     List<Organism> organisms;
-    int[][] worldMap;
+    Organism[][] worldMap;
 
-    public World(final List<Organism> organisms, final int[][] worldMap) {
+    public World(final List<Organism> organisms, final int worldMapSizeX, final int worldMapSizeY) {
         this.organisms = organisms;
-        this.worldMap = worldMap;
+        this.worldMap = new Organism[worldMapSizeX][worldMapSizeY];
     }
 
-    void makeTurn() {
-        for (Organism organizm : organisms) {
-            organizm.action();
-        }
-    }
-
-    void drawWorld() {
-
-    }
 }
