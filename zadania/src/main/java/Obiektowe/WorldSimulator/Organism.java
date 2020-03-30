@@ -14,7 +14,7 @@ public abstract class Organism {
     protected int speed;
     protected int worldCoordinateX;
     protected int worldCoordinateY;
-    protected Organism coordinates;
+    protected int coordinates;
 
     public Organism(final World world, final int strength, final int speed,
                     final int worldCoordinateX, final int worldCoordinateY) {
@@ -24,8 +24,8 @@ public abstract class Organism {
         this.worldCoordinateX = worldCoordinateX;
         this.worldCoordinateY = worldCoordinateY;
         this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
+        getWorld().getOrganisms().add(this);
     }
-
 
 
     protected abstract void action();

@@ -16,8 +16,7 @@ public abstract class Animal extends Organism {
 
     public Animal(final World world, final int strength, final int speed, final int worldCoordinateX, final int worldCoordinateY) {
         super(world, strength, speed, worldCoordinateX, worldCoordinateY);
-
-
+        this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
 
     }
 
