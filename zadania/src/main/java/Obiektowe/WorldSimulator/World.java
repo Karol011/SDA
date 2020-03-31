@@ -9,21 +9,21 @@ import java.util.List;
 public class World {
 
     List<Organism> organisms;
-    public int[][] worldMap;
+    public int[] worldMap;
     int worldMapSizeX;
-    int worldMapSizeY;
+    // int worldMapSizeY;
 
-    public World(final int worldMapSizeX, final int worldMapSizeY) {
+    public World(final int worldMapSizeX) {
         this.organisms = new ArrayList<>();
-        this.worldMap = new int[worldMapSizeX][worldMapSizeY];
+        this.worldMap = new int[worldMapSizeX];
     }
 
     protected void addOrganismsToWorldMap() {
 
         for (Organism o : organisms) {
             int tempCoordX = o.getWorldCoordinateX();
-            int tempCoordY = o.getWorldCoordinateY();
-            worldMap[tempCoordX][tempCoordY] = o.getCoordinates();
+            // int tempCoordY = o.getWorldCoordinateY();
+            worldMap[tempCoordX] = o.getWorldCoordinateX();
         }
     }
 
@@ -34,14 +34,14 @@ public class World {
     }
 
     protected void drawWorld() {
-        for (int i = 0; i < worldMapSizeX; i++) {
-            for (int j = 0; j < worldMapSizeY; j++) {
-                /*if (worldMap[i][j] == null) {
-                    System.out.println("0");
-                } else {
-                    System.out.println("1");
-                }*/
-                System.out.println("*");
+        for (int i = 0; i < getWorldMap().length; i++) {
+            if (worldMap[i] == 0) {
+                System.out.print("0");
+            } else {
+                System.out.print("1");
+            }
+            if ((i + 1) % 10 == 0) { //i+1 so it displays in even rows
+                System.out.println();
             }
         }
     }

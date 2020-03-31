@@ -5,12 +5,6 @@ import java.util.Arrays;
 public class Stringi {
     public static void main(String[] args) {
 
-
-
-
-
-
-
     }
 
     static String usunSamogloski(String wyraz) {

@@ -13,17 +13,19 @@ public abstract class Organism {
     protected int strength;
     protected int speed;
     protected int worldCoordinateX;
-    protected int worldCoordinateY;
-    protected int coordinates;
+
+    // protected int worldCoordinateY;
+    //protected int coordinates;
+
 
     public Organism(final World world, final int strength, final int speed,
-                    final int worldCoordinateX, final int worldCoordinateY) {
+                    final int worldCoordinateX) {
         this.world = world;
         this.strength = strength;
         this.speed = speed;
         this.worldCoordinateX = worldCoordinateX;
-        this.worldCoordinateY = worldCoordinateY;
-        this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
+        //  this.worldCoordinateY = worldCoordinateY;
+        // this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
         getWorld().getOrganisms().add(this);
     }
 

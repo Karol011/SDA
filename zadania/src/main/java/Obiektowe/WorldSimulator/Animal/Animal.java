@@ -14,10 +14,9 @@ import java.util.Random;
 public abstract class Animal extends Organism {
 
 
-    public Animal(final World world, final int strength, final int speed, final int worldCoordinateX, final int worldCoordinateY) {
-        super(world, strength, speed, worldCoordinateX, worldCoordinateY);
-        this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
-
+    public Animal(final World world, final int strength, final int speed, final int worldCoordinateX) {
+        super(world, strength, speed, worldCoordinateX);
+       // this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
     }
 
     @Override
