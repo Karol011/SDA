@@ -2,47 +2,66 @@ package Obiektowe.WorldSimulator;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Data
 public class World {
 
     List<Organism> organisms;
-    public int[] worldMap;
-    int worldMapSizeX;
-    // int worldMapSizeY;
+    Organism[][] worldMap;
 
-    public World(final int worldMapSizeX) {
+    public World() {
         this.organisms = new ArrayList<>();
-        this.worldMap = new int[worldMapSizeX];
+        this.worldMap = new Organism[10][10];
+        // this.worldMapSizeX = worldMapSizeX;
+        //this.worldMapSizeY = worldMapSizeY;
+        //WorldMap worldMap = new WorldMap();
     }
 
-    protected void addOrganismsToWorldMap() {
+    public void addOrganismToWorldMap(Organism o) {
+        boolean wasAdded = false;
+        Random random = new Random();
+        int randomNumber1 = random.nextInt(10);
+        int randomNumber2 = random.nextInt(10);
 
-        for (Organism o : organisms) {
-            int tempCoordX = o.getWorldCoordinateX();
-            // int tempCoordY = o.getWorldCoordinateY();
-            worldMap[tempCoordX] = o.getWorldCoordinateX();
+        if (worldMap[randomNumber1][randomNumber2] == null && !wasAdded) {
+            worldMap[randomNumber1][randomNumber2] = o;
+            wasAdded = true;
+        } else {
+            randomNumber1 = random.nextInt(10);
+            randomNumber2 = random.nextInt(10);
+            worldMap[randomNumber1][randomNumber2] = o;
+            wasAdded = true;
         }
     }
 
+
     public void makeTurn() {
+        System.out.println("NEW ROUND");
         for (Organism o : organisms) {
             o.action();
         }
     }
+/*
+    public boolean defineIfOrganismsOnTheSamePoolAreSameType() {
+
+    }*/
 
     protected void drawWorld() {
-        for (int i = 0; i < getWorldMap().length; i++) {
-            if (worldMap[i] == 0) {
-                System.out.print("0");
-            } else {
-                System.out.print("1");
+        int counter = 0;
+        for (int i = 0; i < worldMap.length; i++) {
+
+            for (int j = 0; j < worldMap[i].length; j++) {
+                counter++;
+                //System.out.println("Field nr: " + counter);
+                if (worldMap[i][j] == null) {
+                    System.out.print("-");
+                } else {
+                    System.out.print(worldMap[i][j].toString() + "");
+                }
+                System.out.print("  ");
             }
-            if ((i + 1) % 10 == 0) { //i+1 so it displays in even rows
-                System.out.println();
-            }
+            System.out.println();
         }
     }
 }

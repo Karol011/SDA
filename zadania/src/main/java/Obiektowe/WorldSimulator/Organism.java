@@ -12,20 +12,15 @@ public abstract class Organism {
     protected World world;
     protected int strength;
     protected int speed;
-    protected int worldCoordinateX;
 
     // protected int worldCoordinateY;
     //protected int coordinates;
 
 
-    public Organism(final World world, final int strength, final int speed,
-                    final int worldCoordinateX) {
+    public Organism(final World world, final int strength, final int speed) {
         this.world = world;
         this.strength = strength;
         this.speed = speed;
-        this.worldCoordinateX = worldCoordinateX;
-        //  this.worldCoordinateY = worldCoordinateY;
-        // this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
         getWorld().getOrganisms().add(this);
     }
 
@@ -35,6 +30,9 @@ public abstract class Organism {
     protected abstract void collision();
 
     protected abstract void draw();
+
+
+
 
 
 }

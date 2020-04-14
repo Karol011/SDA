@@ -9,24 +9,30 @@ public class WorldSimulatorDemo {
 
     public static void main(String[] args) {
         // List<Organism> orgasisms = new ArrayList<>();
-        World world = new World(100);
-        Organism fox = new Fox(world, 10, 10, 50);
-        Organism foxxy = new Fox(world, 10, 10, 65);
-        Organism foxter = new Fox(world, 10, 10, 68);
+        World world = new World();
+        Organism fox = new Fox(world, 10, 10);
+        Organism foxxy = new Fox(world, 10, 10);
+        Organism foxter = new Fox(world, 10, 10);
+
         //  world.getOrganisms().add(fox);
-        world.addOrganismsToWorldMap();
-        world.makeTurn();
+        //world.addOrganismsToWorldMap();
+       // world.getOrganisms().forEach(System.out::println);
+
+        for (int i = 0; i < 10; i++) {
+            world.makeTurn();
+            world.drawWorld();
+        }
         //System.out.println("coords of fox: " +fox.getCoordinates());
         //System.out.println(fox.getWorldCoordinateX());
         //System.out.println(fox.getWorldCoordinateY());
-        world.makeTurn();
-        world.addOrganismsToWorldMap();
-        world.makeTurn();
-        world.addOrganismsToWorldMap();
+       // world.makeTurn();
+       // world.addOrganismsToWorldMap();
+      //  world.makeTurn();
+       // world.addOrganismsToWorldMap();
         //world.makeTurn();
-        world.drawWorld();
-        world.getOrganisms().stream()
-                .filter(o -> o.getWorldCoordinateX() > 40)
-                .forEach(System.out::println);
+       // world.drawWorld();
+       // world.getOrganisms().stream()
+         //       .filter(o -> o.getWorldCoordinateX() > 40)
+           //     .forEach(System.out::println);
     }
 }
