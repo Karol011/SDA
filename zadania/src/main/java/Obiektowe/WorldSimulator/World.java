@@ -1,6 +1,7 @@
 package Obiektowe.WorldSimulator;
 
 import lombok.Data;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.*;
 
@@ -8,31 +9,20 @@ import java.util.*;
 public class World {
 
     List<Organism> organisms;
-    Organism[][] worldMap;
+    Map<Organism, Integer> worldMap;
 
     public World() {
         this.organisms = new ArrayList<>();
-        this.worldMap = new Organism[10][10];
+        this.worldMap = new LinkedHashMap<>();
         // this.worldMapSizeX = worldMapSizeX;
         //this.worldMapSizeY = worldMapSizeY;
         //WorldMap worldMap = new WorldMap();
     }
 
     public void addOrganismToWorldMap(Organism o) {
-        boolean wasAdded = false;
         Random random = new Random();
-        int randomNumber1 = random.nextInt(10);
-        int randomNumber2 = random.nextInt(10);
-
-        if (worldMap[randomNumber1][randomNumber2] == null && !wasAdded) {
-            worldMap[randomNumber1][randomNumber2] = o;
-            wasAdded = true;
-        } else {
-            randomNumber1 = random.nextInt(10);
-            randomNumber2 = random.nextInt(10);
-            worldMap[randomNumber1][randomNumber2] = o;
-            wasAdded = true;
-        }
+        int randomNumber = random.nextInt(100);
+        worldMap.put(o, randomNumber);
     }
 
 
@@ -42,26 +32,31 @@ public class World {
             o.action();
         }
     }
-/*
-    public boolean defineIfOrganismsOnTheSamePoolAreSameType() {
 
-    }*/
+    public boolean defineIfOrganismsOnTheSamePoolAreSameType(int pool) {
+        return false;
+    }
+
 
     protected void drawWorld() {
-        int counter = 0;
-        for (int i = 0; i < worldMap.length; i++) {
-
-            for (int j = 0; j < worldMap[i].length; j++) {
-                counter++;
-                //System.out.println("Field nr: " + counter);
-                if (worldMap[i][j] == null) {
-                    System.out.print("-");
-                } else {
-                    System.out.print(worldMap[i][j].toString() + "");
-                }
-                System.out.print("  ");
+        boolean wasPopulatedWithEmptyEntries = false;
+        if (!wasPopulatedWithEmptyEntries) {
+            populateMapWithEmptyEntries();
+            wasPopulatedWithEmptyEntries = true;
+        }
+        for (Map.Entry entry : worldMap.entrySet()) {
+            if (entry.getValue().equals(0)) {
+                System.out.print(" - ");
+            } else {
+                System.out.print(this);
             }
-            System.out.println();
         }
     }
+
+    private void populateMapWithEmptyEntries() {
+        for (int i = 0; i < 100; i++) {
+            worldMap.put(null, 0);
+        }
+    }
+
 }

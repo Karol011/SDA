@@ -26,7 +26,7 @@ public abstract class Animal extends Organism {
     @Override
     protected abstract void collision();
 
-    protected abstract void move();
+ //   protected abstract void move();
 
     @Override
     protected abstract void draw();

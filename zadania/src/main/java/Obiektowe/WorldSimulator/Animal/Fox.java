@@ -21,13 +21,14 @@ public class Fox extends Animal {
     @Override
     protected void action() {
         checkIfOrganismWasAddedToWorldMap();
-        move();
+   //     move();
     }
 
     @Override
     protected void collision() {
 
     }
+/*
 
     @Override
     protected void move() {
@@ -46,7 +47,8 @@ public class Fox extends Animal {
 
         world.getWorldMap()[randomlyChangePosition(xPos)][randomlyChangePosition(yPos)] = this;
 
-       /* if (xPos == 0 && yPos == 0) {
+       */
+/* if (xPos == 0 && yPos == 0) {
             world.getWorldMap()[xPos][yPos] = this;
             System.out.println(this.toString() + " didn't change his position, because of map limit");
         } else if (xPos == 0 || yPos == 0) {
@@ -61,8 +63,10 @@ public class Fox extends Animal {
         } else {
             world.getWorldMap()[xPos - 1][yPos - 1] = this;
             System.out.println("new position of " + this.toString() + " is " + (xPos - 1) + "," + (yPos - 1));
-        }*/
+        }*//*
+
     }
+*/
 
     private int randomlyChangePosition(int pos) {
         Random random = new Random();

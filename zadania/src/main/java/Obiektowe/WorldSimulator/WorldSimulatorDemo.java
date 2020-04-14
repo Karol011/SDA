@@ -18,7 +18,7 @@ public class WorldSimulatorDemo {
         //world.addOrganismsToWorldMap();
        // world.getOrganisms().forEach(System.out::println);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             world.makeTurn();
             world.drawWorld();
         }
