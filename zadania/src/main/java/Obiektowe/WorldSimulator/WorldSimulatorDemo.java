@@ -10,6 +10,7 @@ public class WorldSimulatorDemo {
     public static void main(String[] args) {
         // List<Organism> orgasisms = new ArrayList<>();
         World world = new World();
+        world.drawWorld();
         Organism fox = new Fox(world, 10, 10);
         Organism foxxy = new Fox(world, 10, 10);
         Organism foxter = new Fox(world, 10, 10);
@@ -18,7 +19,7 @@ public class WorldSimulatorDemo {
         //world.addOrganismsToWorldMap();
        // world.getOrganisms().forEach(System.out::println);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
             world.makeTurn();
             world.drawWorld();
         }
