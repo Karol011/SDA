@@ -1,8 +1,11 @@
 package Obiektowe.WorldSimulator.Animal;
 
+import Obiektowe.WorldSimulator.Organism;
 import Obiektowe.WorldSimulator.World;
+import com.google.common.collect.Multimap;
 import lombok.Data;
 
+import java.util.Map;
 import java.util.Random;
 
 @Data
@@ -21,64 +24,61 @@ public class Fox extends Animal {
     @Override
     protected void action() {
         checkIfOrganismWasAddedToWorldMap();
-   //     move();
+        move();
     }
 
     @Override
     protected void collision() {
 
     }
-/*
+
 
     @Override
     protected void move() {
-        int xPos = 0;
-        int yPos = 0;
-
-        for (int i = 0; i < world.getWorldMap().length; i++) {
-            for (int j = 0; j < world.getWorldMap()[i].length; j++) {
-                if (world.getWorldMap()[i][j] != null && world.getWorldMap()[i][j].equals(this)) {
-                    xPos = i;
-                    yPos = j;
-                    world.getWorldMap()[i][j] = null;
-                }
+        int MIN_WORLDMAP_POSITION = 0;
+        int MAX_WORLDMAP_POSITION = 99;
+        int currentOrganismPosition = 0;
+        int newOrganismPosition;
+        for (Map.Entry<Integer, Organism> entry : getWorld().getWorldMap().entries()) {
+            if (entry.getValue() != null && entry.getValue().equals(this)) {
+                currentOrganismPosition = entry.getKey();
             }
         }
-
-        world.getWorldMap()[randomlyChangePosition(xPos)][randomlyChangePosition(yPos)] = this;
-
-       */
-/* if (xPos == 0 && yPos == 0) {
-            world.getWorldMap()[xPos][yPos] = this;
-            System.out.println(this.toString() + " didn't change his position, because of map limit");
-        } else if (xPos == 0 || yPos == 0) {
-            if (xPos == 0) {
-                world.getWorldMap()[xPos][yPos - 1] = this;
-                System.out.println("new position of " + this.toString() + " is " + (xPos) + "," + (yPos - 1));
-            }
-            if (yPos == 0) {
-                world.getWorldMap()[xPos - 1][yPos] = this;
-                System.out.println("new position of " + this.toString() + " is " + (xPos - 1) + "," + yPos);
-            }
-        } else {
-            world.getWorldMap()[xPos - 1][yPos - 1] = this;
-            System.out.println("new position of " + this.toString() + " is " + (xPos - 1) + "," + (yPos - 1));
-        }*//*
-
+        newOrganismPosition = randomlyChangePosition(currentOrganismPosition);
+        getWorld().getWorldMap().remove(currentOrganismPosition, this);
+        getWorld().getWorldMap().put(newOrganismPosition, this);
     }
-*/
 
-    private int randomlyChangePosition(int pos) {
+    private int randomlyChangePosition(int currentOrganismPosition) {
+        int NUMBER_TO_MOVE_LEFT_BY_1 = -1;
+        int NUMBER_TO_MOVE_RIGHT_BY_1 = 1;
+        int NUMBER_TO_MOVE_UP_BY_1 = -10;
+        int NUMBER_TO_MOVE_DOWN_BY_1 = 10;
         Random random = new Random();
-        int newXPos;
-        newXPos = (random.nextInt(3) - 1) + pos;
-        if (newXPos > 9) {
-            newXPos = 9;
+        int randomNumber = random.nextInt(4) + 1;
+        int newPosition;
+
+        switch (randomNumber) {
+            case 1:
+                //Move left
+                newPosition = NUMBER_TO_MOVE_LEFT_BY_1;
+                break;
+            case 2:
+                //Move right
+                newPosition = NUMBER_TO_MOVE_RIGHT_BY_1;
+                break;
+            case 3:
+                //Move up
+                newPosition = NUMBER_TO_MOVE_UP_BY_1;
+                break;
+            case 4:
+                //Move down
+                newPosition = NUMBER_TO_MOVE_DOWN_BY_1;
+                break;
+            default:
+                newPosition = 0;
         }
-        if (newXPos < 0) {
-            newXPos = 0;
-        }
-        return newXPos;
+        return currentOrganismPosition + newPosition;
     }
 
     @Override

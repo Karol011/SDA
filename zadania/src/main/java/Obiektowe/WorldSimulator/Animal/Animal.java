@@ -16,7 +16,7 @@ public abstract class Animal extends Organism {
 
     public Animal(final World world, final int strength, final int speed) {
         super(world, strength, speed);
-       // this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
+        // this.coordinates = world.worldMap[worldCoordinateX][worldCoordinateY];
     }
 
     @Override
@@ -26,7 +26,7 @@ public abstract class Animal extends Organism {
     @Override
     protected abstract void collision();
 
- //   protected abstract void move();
+    protected abstract void move();
 
     @Override
     protected abstract void draw();

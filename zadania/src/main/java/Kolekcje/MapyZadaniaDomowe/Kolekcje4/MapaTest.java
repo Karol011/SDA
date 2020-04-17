@@ -53,6 +53,7 @@ public class MapaTest {
         treeMapaStringow.put("Wiola",85);
         treeMapaStringow.put("Karolina",15);
         treeMapaStringow.put("Pioter",34);
+        treeMapaStringow.put("Pioster",34);
 
         System.out.println(treeMapaStringow);
 

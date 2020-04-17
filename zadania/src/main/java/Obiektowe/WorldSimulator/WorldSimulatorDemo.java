@@ -14,12 +14,17 @@ public class WorldSimulatorDemo {
         Organism fox = new Fox(world, 10, 10);
         Organism foxxy = new Fox(world, 10, 10);
         Organism foxter = new Fox(world, 10, 10);
+        Organism foxtser = new Fox(world, 10, 10);
+        Organism foxtedr = new Fox(world, 10, 10);
+        Organism foxterd = new Fox(world, 10, 10);
+        Organism foxtera = new Fox(world, 10, 10);
+        Organism foxtesr = new Fox(world, 10, 10);
 
         //  world.getOrganisms().add(fox);
         //world.addOrganismsToWorldMap();
        // world.getOrganisms().forEach(System.out::println);
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 2; i++) {
             world.makeTurn();
             world.drawWorld();
         }

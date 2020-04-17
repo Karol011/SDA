@@ -32,7 +32,4 @@ public abstract class Organism {
     protected abstract void draw();
 
 
-
-
-
 }
