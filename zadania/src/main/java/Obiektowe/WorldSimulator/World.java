@@ -21,7 +21,7 @@ public class World {
 
     public void addOrganismToWorldMap(Organism o) {
         Random random = new Random();
-        int randomNumber = random.nextInt(10);
+        int randomNumber = random.nextInt(5);
         worldMap.put(randomNumber, o);
 //        worldMap.remove(randomNumber, null);
     }
@@ -44,18 +44,26 @@ public class World {
             if (counter % 10 == 0) {
                 System.out.println();
             }
+            System.out.print(" ");
             if (valuesForKey.size() == 1) {
-                System.out.print("  " + counter + "  ");
+                System.out.print(" ");
+                System.out.print(counter);
+                System.out.print(" ");
             } else {
                 printValuesWithoutNullEntry(valuesForKey);
             }
+            System.out.print(" ");
             counter++;
         }
     }
 
     private void printValuesWithoutNullEntry(Collection<Organism> organisms) {
-        final int INDEX_WHERE_NULL_PHRASE_ENDS = 7;
-        System.out.print("[" + organisms.toString().substring(INDEX_WHERE_NULL_PHRASE_ENDS));
+        final Collection<Organism> sortedOrganisms = organisms.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        final int INDEX_WHERE_NULL_PHRASE_BEGINS = sortedOrganisms.toString().length() - 7;
+        System.out.print(sortedOrganisms.toString().substring(0, INDEX_WHERE_NULL_PHRASE_BEGINS) + "]");
     }
 
     private void populateMapWithEmptyEntries() {

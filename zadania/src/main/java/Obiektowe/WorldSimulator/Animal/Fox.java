@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Random;
 
 @Data
-public class Fox extends Animal {
+public class Fox extends Animal implements Comparable {
     protected int id;
     protected static int idCcounter;
     private boolean isAdded = false;
@@ -35,8 +35,6 @@ public class Fox extends Animal {
 
     @Override
     protected void move() {
-        int MIN_WORLDMAP_POSITION = 0;
-        int MAX_WORLDMAP_POSITION = 99;
         int currentOrganismPosition = 0;
         int newOrganismPosition;
         for (Map.Entry<Integer, Organism> entry : getWorld().getWorldMap().entries()) {
@@ -105,4 +103,21 @@ public class Fox extends Animal {
         return "F" + id;
     }
 
+
+    @Override
+    public int compareTo(final Object o) {
+        if (o == null) {
+            return -1;
+        }
+        if (o.getClass().equals(this.getClass())) {
+            Fox fox = (Fox) o;
+            if (fox.getId() < this.getId()) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } else {
+            return 0;
+        }
+    }
 }
