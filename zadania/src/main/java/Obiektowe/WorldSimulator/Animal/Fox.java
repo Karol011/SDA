@@ -54,6 +54,8 @@ public class Fox extends Animal {
         int NUMBER_TO_MOVE_RIGHT_BY_1 = 1;
         int NUMBER_TO_MOVE_UP_BY_1 = -10;
         int NUMBER_TO_MOVE_DOWN_BY_1 = 10;
+        int MIN_WORLDMAP_POSITION = 0;
+        int MAX_WORLDMAP_POSITION = 99;
         Random random = new Random();
         int randomNumber = random.nextInt(4) + 1;
         int newPosition;
@@ -78,7 +80,12 @@ public class Fox extends Animal {
             default:
                 newPosition = 0;
         }
-        return currentOrganismPosition + newPosition;
+        if (currentOrganismPosition + newPosition >= MIN_WORLDMAP_POSITION &&
+                currentOrganismPosition + newPosition <= MAX_WORLDMAP_POSITION) {
+            return currentOrganismPosition + newPosition;
+        } else {
+            return currentOrganismPosition;
+        }
     }
 
     @Override
@@ -95,7 +102,7 @@ public class Fox extends Animal {
 
     @Override
     public String toString() {
-        return "Fox" + id;
+        return "F" + id;
     }
 
 }

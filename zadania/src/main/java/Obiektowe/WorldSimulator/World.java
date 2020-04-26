@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import lombok.Data;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Data
 public class World {
@@ -20,13 +21,13 @@ public class World {
 
     public void addOrganismToWorldMap(Organism o) {
         Random random = new Random();
-        int randomNumber = random.nextInt(100);
-        worldMap.removeAll(randomNumber);
+        int randomNumber = random.nextInt(10);
         worldMap.put(randomNumber, o);
+//        worldMap.remove(randomNumber, null);
     }
 
     public void makeTurn() {
-        System.out.println("\nNEW ROUND");
+        System.out.println("\n ***** NEW ROUND ***** \n");
         for (Organism o : organisms) {
             o.action();
         }
@@ -38,17 +39,23 @@ public class World {
 
     protected void drawWorld() {
         int counter = 0;
-        for (Map.Entry<Integer, Organism> entry : worldMap.entries()) {
+        for (Map.Entry<Integer, Collection<Organism>> entry : worldMap.asMap().entrySet()) {
+            Collection<Organism> valuesForKey = entry.getValue();
             if (counter % 10 == 0) {
                 System.out.println();
             }
-            if (entry.getValue() == null) {
-                System.out.print("  -  ");
+            if (valuesForKey.size() == 1) {
+                System.out.print("  " + counter + "  ");
             } else {
-                System.out.print(" " + entry.getValue());
+                printValuesWithoutNullEntry(valuesForKey);
             }
             counter++;
         }
+    }
+
+    private void printValuesWithoutNullEntry(Collection<Organism> organisms) {
+        final int INDEX_WHERE_NULL_PHRASE_ENDS = 7;
+        System.out.print("[" + organisms.toString().substring(INDEX_WHERE_NULL_PHRASE_ENDS));
     }
 
     private void populateMapWithEmptyEntries() {
