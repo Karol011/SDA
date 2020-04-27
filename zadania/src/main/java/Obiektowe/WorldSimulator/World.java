@@ -21,9 +21,8 @@ public class World {
 
     public void addOrganismToWorldMap(Organism o) {
         Random random = new Random();
-        int randomNumber = random.nextInt(5);
+        int randomNumber = random.nextInt(100);
         worldMap.put(randomNumber, o);
-//        worldMap.remove(randomNumber, null);
     }
 
     public void makeTurn() {
@@ -31,10 +30,6 @@ public class World {
         for (Organism o : organisms) {
             o.action();
         }
-    }
-
-    public boolean defineIfOrganismsOnTheSamePoolAreSameType(int pool) {
-        return false;
     }
 
     protected void drawWorld() {
@@ -61,9 +56,8 @@ public class World {
         final Collection<Organism> sortedOrganisms = organisms.stream()
                 .sorted()
                 .collect(Collectors.toList());
-
         final int INDEX_WHERE_NULL_PHRASE_BEGINS = sortedOrganisms.toString().length() - 7;
-        System.out.print(sortedOrganisms.toString().substring(0, INDEX_WHERE_NULL_PHRASE_BEGINS) + "]");
+        System.out.print(sortedOrganisms.toString());
     }
 
     private void populateMapWithEmptyEntries() {

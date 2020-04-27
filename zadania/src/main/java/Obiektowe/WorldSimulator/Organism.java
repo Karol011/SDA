@@ -7,14 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
-public abstract class Organism {
+public abstract class Organism implements Comparable {
 
     protected World world;
     protected int strength;
     protected int speed;
-
-    // protected int worldCoordinateY;
-    //protected int coordinates;
+    private boolean isAdded = false;
 
 
     public Organism(final World world, final int strength, final int speed) {
@@ -24,13 +22,27 @@ public abstract class Organism {
         getWorld().getOrganisms().add(this);
     }
 
+    protected void action() {
+        checkIfOrganismWasAddedToWorldMap();
+    }
 
-    protected abstract void action();
+    private void checkIfOrganismWasAddedToWorldMap() {
+        if (!isAdded) {
+            getWorld().addOrganismToWorldMap(this);
+            isAdded = true;
+        }
+    }
 
     protected abstract void collision();
 
     protected abstract void draw();
 
-
+    public int compareTo(final Object o) {
+        if (o == null) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 
 }
