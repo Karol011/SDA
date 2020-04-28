@@ -21,7 +21,7 @@ public class World {
 
     public void addOrganismToWorldMap(Organism o) {
         Random random = new Random();
-        int randomNumber = random.nextInt(100);
+        int randomNumber = random.nextInt(10);
         worldMap.put(randomNumber, o);
     }
 
@@ -57,7 +57,11 @@ public class World {
                 .sorted()
                 .collect(Collectors.toList());
         final int INDEX_WHERE_NULL_PHRASE_BEGINS = sortedOrganisms.toString().length() - 7;
-        System.out.print(sortedOrganisms.toString());
+        System.out.print(sortedOrganisms.toString()
+                .substring(0, INDEX_WHERE_NULL_PHRASE_BEGINS)
+                .replaceAll(" ", "")
+                + "]"
+        );
     }
 
     private void populateMapWithEmptyEntries() {
