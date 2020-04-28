@@ -33,9 +33,7 @@ public abstract class Organism implements Comparable {
         }
     }
 
-    protected void collision() {
-        System.out.println("collision!");
-    }
+    protected abstract void collision();
 
     protected abstract void draw();
 
