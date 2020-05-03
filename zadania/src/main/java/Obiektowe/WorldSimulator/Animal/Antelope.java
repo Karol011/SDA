@@ -3,13 +3,13 @@ package Obiektowe.WorldSimulator.Animal;
 import Obiektowe.WorldSimulator.World;
 
 public class Antelope extends Animal implements Comparable {
-    protected int id;
-    protected static int idCcounter;
+    private int id;
+    private static int idCounter;
 
-    public Antelope(final World world, final int strength, final int speed) {
-        super(world, strength, speed);
-        idCcounter++;
-        id = idCcounter;
+    public Antelope(final World world) {
+        super(world, 4, 4);
+        idCounter++;
+        id = idCounter;
     }
 
     @Override
@@ -27,10 +27,6 @@ public class Antelope extends Animal implements Comparable {
         return "A" + id;
     }
 
-    @Override
-    protected void collision() {
-
-    }
 
     @Override
     protected void draw() {

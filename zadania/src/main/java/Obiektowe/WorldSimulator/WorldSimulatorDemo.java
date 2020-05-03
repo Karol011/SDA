@@ -11,16 +11,16 @@ public class WorldSimulatorDemo {
     public static void main(String[] args) {
         World world = new World();
         world.drawWorld();
-        Organism fox = new Fox(world, 10, 10);
-        Organism foxxy = new Fox(world, 10, 10);
-        Organism foxter = new Fox(world, 10, 10);
-        Organism foxters = new Fox(world, 10, 10);
-        Organism foxtessr = new Fox(world, 10, 10);
-        Organism antelope = new Antelope(world, 5, 5);
-        Organism antelodpe = new Antelope(world, 5, 5);
-        Organism antelosdpe = new Antelope(world, 5, 5);
-        Organism antel4ope = new Antelope(world, 5, 5);
-        Organism antelop3e = new Antelope(world, 5, 5);
+        Organism fox = new Fox(world);
+        Organism foxxy = new Fox(world);
+        Organism foxter = new Fox(world);
+        Organism foxters = new Fox(world);
+        Organism foxtessr = new Fox(world);
+        Organism antelope = new Antelope(world);
+        Organism antelodpe = new Antelope(world);
+        Organism antelosdpe = new Antelope(world);
+        Organism antel4ope = new Antelope(world);
+        Organism antelop3e = new Antelope(world);
 
 
         for (int i = 0; i < 2; i++) {

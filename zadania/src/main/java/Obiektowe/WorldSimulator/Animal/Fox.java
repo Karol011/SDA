@@ -8,16 +8,12 @@ public class Fox extends Animal implements Comparable {
     protected int id;
     protected static int idCounter;
 
-    public Fox(final World world, final int strength, final int speed) {
-        super(world, strength, speed);
+    public Fox(final World world) {
+        super(world, 3, 7);
         idCounter++;
         id = idCounter;
     }
 
-
-    @Override
-    protected void collision() {
-    }
 
     @Override
     protected void move() {

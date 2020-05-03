@@ -1,8 +1,12 @@
 package Obiektowe.WorldSimulator;
 
+import Obiektowe.WorldSimulator.Animal.Antelope;
+import Obiektowe.WorldSimulator.Animal.Fox;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.*;
 
 @Getter
 @Setter
@@ -14,7 +18,6 @@ public abstract class Organism implements Comparable {
     protected int speed;
     private boolean isAdded = false;
 
-
     public Organism(final World world, final int strength, final int speed) {
         this.world = world;
         this.strength = strength;
@@ -24,6 +27,7 @@ public abstract class Organism implements Comparable {
 
     protected void action() {
         checkIfOrganismWasAddedToWorldMap();
+        checkIfAnyPoolHasMoreThanOneOrganismOnIt();
     }
 
     private void checkIfOrganismWasAddedToWorldMap() {
@@ -33,7 +37,52 @@ public abstract class Organism implements Comparable {
         }
     }
 
-    protected abstract void collision();
+    private void checkIfAnyPoolHasMoreThanOneOrganismOnIt() {
+        for (Map.Entry<Integer, Collection<Organism>> entry : getWorld().getWorldMap().asMap().entrySet()) {
+            Collection<Organism> organisms = entry.getValue();
+            if (organisms.size() > 1) {
+                collision(entry);
+            }
+        }
+    }
+
+    protected void collision(Map.Entry<Integer, Collection<Organism>> entry) {
+        Integer organismPosition = entry.getKey();
+        Collection<Organism> collection = entry.getValue();
+        List<Organism> organismList = new ArrayList<>(collection);
+        if (organismList.size() == 3) {
+            Organism firstOrganism = organismList.get(1);
+            Organism secondOrganism = organismList.get(2);
+            if (checkIfOrganismAreSameType(firstOrganism, secondOrganism)) {
+                reproduce(firstOrganism, secondOrganism, organismPosition);
+            } else {
+                fight(firstOrganism, secondOrganism);
+            }
+        }
+    }
+
+    private boolean checkIfOrganismAreSameType(Organism firstOrganism, Organism secondOrganism) {
+        return firstOrganism.getClass().equals(secondOrganism.getClass());
+    }
+
+    private void reproduce(Organism firstOrganism, Organism secondOrganism, Integer worldMapPosition) {
+
+        if (firstOrganism instanceof Antelope) {
+            getWorld().getWorldMap().put(worldMapPosition, new Antelope(getWorld()));
+            //todo randomly change position of newly created organism
+        }
+        if (firstOrganism instanceof Fox) {
+            getWorld().getWorldMap().put(worldMapPosition, new Fox(getWorld()));
+        }
+        System.out.println("two organism of the same type collided at pool " + worldMapPosition +
+                " creating new " + firstOrganism.getClass().toString());
+    }
+
+    private Organism fight(Organism firstOrganism, Organism secondOrganism) {
+
+        return null;
+    }
+
 
     protected abstract void draw();
 

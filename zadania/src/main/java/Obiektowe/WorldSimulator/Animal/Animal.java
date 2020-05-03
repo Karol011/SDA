@@ -25,9 +25,6 @@ public abstract class Animal extends Organism implements Comparable {
         move();
     }
 
-    @Override
-    protected abstract void collision();
-
     protected void move() {
         int currentOrganismPosition = 0;
         int newOrganismPosition;
@@ -46,8 +43,8 @@ public abstract class Animal extends Organism implements Comparable {
         int NUMBER_TO_MOVE_RIGHT_BY_1 = 1;
         int NUMBER_TO_MOVE_UP_BY_1 = -10;
         int NUMBER_TO_MOVE_DOWN_BY_1 = 10;
-        int MIN_WORLDMAP_POSITION = 0;
-        int MAX_WORLDMAP_POSITION = 99;
+        int MIN_WORLD_MAP_POSITION = 0;
+        int MAX_WORLD_MAP_POSITION = 99;
         Random random = new Random();
         int randomNumber = random.nextInt(4) + 1;
         int newPosition;
@@ -72,8 +69,8 @@ public abstract class Animal extends Organism implements Comparable {
             default:
                 newPosition = 0;
         }
-        if (currentOrganismPosition + newPosition >= MIN_WORLDMAP_POSITION &&
-                currentOrganismPosition + newPosition <= MAX_WORLDMAP_POSITION) {
+        if (currentOrganismPosition + newPosition >= MIN_WORLD_MAP_POSITION &&
+                currentOrganismPosition + newPosition <= MAX_WORLD_MAP_POSITION) {
             return currentOrganismPosition + newPosition;
         } else {
             return currentOrganismPosition;
