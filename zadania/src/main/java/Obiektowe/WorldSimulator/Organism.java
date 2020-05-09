@@ -50,7 +50,7 @@ public abstract class Organism implements Comparable {
         Integer organismPosition = entry.getKey();
         Collection<Organism> collection = entry.getValue();
         List<Organism> organismList = new ArrayList<>(collection);
-        if (organismList.size() == 3) {
+        if (organismList.size() == 3) {//null,organism1,organism2
             Organism firstOrganism = organismList.get(1);
             Organism secondOrganism = organismList.get(2);
             if (checkIfOrganismAreSameType(firstOrganism, secondOrganism)) {
@@ -66,16 +66,21 @@ public abstract class Organism implements Comparable {
     }
 
     private void reproduce(Organism firstOrganism, Organism secondOrganism, Integer worldMapPosition) {
+        Optional<Organism> newlyCreatedOrganism = Optional.empty();
 
         if (firstOrganism instanceof Antelope) {
-            getWorld().getWorldMap().put(worldMapPosition, new Antelope(getWorld()));
+            newlyCreatedOrganism = Optional.of(new Antelope(getWorld()));
             //todo randomly change position of newly created organism
         }
         if (firstOrganism instanceof Fox) {
-            getWorld().getWorldMap().put(worldMapPosition, new Fox(getWorld()));
+            newlyCreatedOrganism = Optional.of(new Fox(getWorld()));
         }
-        System.out.println("two organism of the same type collided at pool " + worldMapPosition +
-                " creating new " + firstOrganism.getClass().toString());
+        if (newlyCreatedOrganism.isPresent()) {
+            getWorld().getWorldMap().put(worldMapPosition, newlyCreatedOrganism.get());
+
+            System.out.println("two organism of the same type collided at pool " + worldMapPosition +
+                    " creating new " + newlyCreatedOrganism.get().toString());
+        }
     }
 
     private Organism fight(Organism firstOrganism, Organism secondOrganism) {

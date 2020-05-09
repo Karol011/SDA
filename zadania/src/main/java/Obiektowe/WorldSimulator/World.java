@@ -27,8 +27,11 @@ public class World {
 
     public void makeTurn() {
         System.out.println("\n ***** NEW ROUND ***** \n");
-        for (Organism o : getOrganisms()) {
+       /* for (Organism o : getOrganisms()) {
             o.action();
+        }*/
+        for (int i = 0; i < getOrganisms().size(); i++) {
+            getOrganisms().get(i).action();
         }
     }
 
