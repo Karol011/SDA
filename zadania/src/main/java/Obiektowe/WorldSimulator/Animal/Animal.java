@@ -38,7 +38,7 @@ public abstract class Animal extends Organism implements Comparable {
         getWorld().getWorldMap().put(newOrganismPosition, this);
     }
 
-    private int randomlyChangePosition(int currentOrganismPosition) {
+    protected int randomlyChangePosition(int currentOrganismPosition) {
         int NUMBER_TO_MOVE_LEFT_BY_1 = -1;
         int NUMBER_TO_MOVE_RIGHT_BY_1 = 1;
         int NUMBER_TO_MOVE_UP_BY_1 = -10;
