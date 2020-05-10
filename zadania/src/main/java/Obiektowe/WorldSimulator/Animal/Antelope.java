@@ -1,7 +1,10 @@
 package Obiektowe.WorldSimulator.Animal;
 
+import Obiektowe.WorldSimulator.Organism;
 import Obiektowe.WorldSimulator.World;
 
+import java.util.Collection;
+import java.util.Map;
 import java.util.Random;
 
 public class Antelope extends Animal implements Comparable {
@@ -17,6 +20,12 @@ public class Antelope extends Animal implements Comparable {
     @Override
     protected void action() {
         super.action();
+    }
+
+    @Override
+    protected void collision(final Map.Entry<Integer, Collection<Organism>> entry) {
+        super.collision(entry);
+        //todo 50% chance to escape from fight (moves to nearby, unoccupied field)
     }
 
     @Override

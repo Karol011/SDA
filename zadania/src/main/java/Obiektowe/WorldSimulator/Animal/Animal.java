@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Random;
 
@@ -23,6 +24,11 @@ public abstract class Animal extends Organism implements Comparable {
     protected void action() {
         super.action();
         move();
+    }
+
+    @Override
+    protected void collision(final Map.Entry<Integer, Collection<Organism>> entry) {
+        super.collision(entry);
     }
 
     protected void move() {

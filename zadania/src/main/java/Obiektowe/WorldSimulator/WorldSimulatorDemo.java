@@ -21,6 +21,11 @@ public class WorldSimulatorDemo {
         Organism antelosdpe = new Antelope(world);
         Organism antel4ope = new Antelope(world);
         Organism antelop3e = new Antelope(world);
+        Organism antelop3de = new Antelope(world);
+        Organism antelops3e = new Antelope(world);
+        Organism antelop3dde = new Antelope(world);
+        Organism antelop3ew = new Antelope(world);
+        Organism antelop3ewww = new Antelope(world);
 
 
         for (int i = 0; i < 2; i++) {

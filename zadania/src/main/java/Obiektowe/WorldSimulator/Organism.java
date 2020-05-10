@@ -85,7 +85,6 @@ public abstract class Organism implements Comparable {
 
     private void fight(Organism firstOrganism, Organism secondOrganism, Integer worldMapPosition) {
         Organism loser;
-
         if (firstOrganism.getStrength() == secondOrganism.getStrength()) {
             draw();
         } else {
@@ -104,7 +103,6 @@ public abstract class Organism implements Comparable {
         }
 
     }
-
 
     protected abstract void draw();
 
