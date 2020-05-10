@@ -56,7 +56,7 @@ public abstract class Organism implements Comparable {
             if (checkIfOrganismAreSameType(firstOrganism, secondOrganism)) {
                 reproduce(firstOrganism, secondOrganism, organismPosition);
             } else {
-                fight(firstOrganism, secondOrganism);
+                fight(firstOrganism, secondOrganism, organismPosition);
             }
         }
     }
@@ -83,9 +83,26 @@ public abstract class Organism implements Comparable {
         }
     }
 
-    private Organism fight(Organism firstOrganism, Organism secondOrganism) {
+    private void fight(Organism firstOrganism, Organism secondOrganism, Integer worldMapPosition) {
+        Organism loser;
 
-        return null;
+        if (firstOrganism.getStrength() == secondOrganism.getStrength()) {
+            draw();
+        } else {
+            if (firstOrganism.getStrength() > secondOrganism.getStrength()) {
+                loser = secondOrganism;
+            } else {
+                loser = firstOrganism;
+            }
+            getWorld().getOrganisms().remove(loser);
+            getWorld().getWorldMap().remove(worldMapPosition, loser);
+            System.out.println(
+                    firstOrganism.toString() + " and " + secondOrganism.toString() +
+                            " have fought at pool " + worldMapPosition +
+                            ", " + loser.toString() +
+                            " didn't survive");
+        }
+
     }
 
 

@@ -66,8 +66,8 @@ public class Book {
      * Znaki inne niż litery i cyfry (non-word characters) są usunięte z wyrazów.
      * Zwrócone wyrazy zapisane są małymi literami.
      */
-   // public Set<String> keywordsIn(Book... books) {
-        //  throw new UnsupportedOperationException("Not implemented yet");
+    // public Set<String> keywordsIn(Book... books) {
+    //  throw new UnsupportedOperationException("Not implemented yet");
       /*  Set<String> stringSet = Arrays.stream(books)
                 .map(s ->s.getTitle())
                     .flatMap(s -> s.split(" "))
@@ -78,13 +78,14 @@ public class Book {
 
     }
 */
+
     /**
      * Zwraca mapę pozwalającą znaleźć książki po tytule.
      */
     static Map<String, Book> byTitle(Book... books) {
-        Map<String,Book> bookMap = Arrays.stream(books)
+        Map<String, Book> bookMap = Arrays.stream(books)
                 .collect(Collectors.toMap(Book::getTitle, Function.identity()));
-return bookMap;
+        return bookMap;
         // throw new UnsupportedOperationException("Not implemented yet");
     }
 
