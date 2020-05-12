@@ -1,3 +1,4 @@
+/*
 package Obiektowe.WorldSimulator.Plant;
 
 //mlecz
@@ -28,3 +29,4 @@ public class SowThistle extends Plant {
 
     }
 }
+*/

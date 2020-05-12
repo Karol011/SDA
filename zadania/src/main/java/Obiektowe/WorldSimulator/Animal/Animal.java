@@ -17,7 +17,8 @@ public abstract class Animal extends Organism implements Comparable {
 
 
     public Animal(final World world, final int strength, final int speed) {
-        super(world, strength, speed);
+        super(world, strength);
+        this.speed = speed;
     }
 
     @Override

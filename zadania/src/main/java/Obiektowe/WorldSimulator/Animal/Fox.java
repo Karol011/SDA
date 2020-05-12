@@ -6,6 +6,8 @@ import lombok.Data;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Data
 public class Fox extends Animal implements Comparable {
@@ -58,7 +60,7 @@ public class Fox extends Animal implements Comparable {
         }
         if (currentOrganismPosition + newPosition >= MIN_WORLD_MAP_POSITION &&
                 currentOrganismPosition + newPosition <= MAX_WORLD_MAP_POSITION &&
-                !desiredFieldIsOccupiedWithStrongerOrganism(newPosition)) {
+                !desiredFieldIsOccupiedWithStrongerOrganism(currentOrganismPosition + newPosition)) {
             return currentOrganismPosition + newPosition;
         } else {
             return currentOrganismPosition;
@@ -85,7 +87,27 @@ public class Fox extends Animal implements Comparable {
                 return true;
             }
         }*/
-       return false;
+        /*final Optional<Integer> integer = getWorld().getWorldMap().asMap().entrySet().stream()
+                .filter(element -> element.getKey() == newPosition)
+                .filter(Objects::nonNull)
+                .map(organism -> organism.getValue().stream())
+                .filter(Objects::nonNull)
+                .flatMap(organismStream -> organismStream
+                        .map(Organism::getStrength)
+                        .filter(strength -> strength > 3))
+                .findAny();
+        if (integer.isEmpty()) {//no other organisms on nearby field
+            return false;
+        } else {
+            if (this.getStrength() > integer.get()) {//fox is stronger than organism on nearby field
+                System.out.println("smart at " + newPosition);
+                return false;
+            } else {//fox is weaker
+                return true;
+
+            }
+        }*/
+        return false;
     }
 
 

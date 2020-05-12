@@ -18,6 +18,11 @@ public class World {
         this.worldMap = ArrayListMultimap.create();
         populateMapWithEmptyEntries();
     }
+    private void populateMapWithEmptyEntries() {
+        for (int i = 0; i < 100; i++) {
+            getWorldMap().put(i, null);
+        }
+    }
 
     public void addOrganismToWorldMap(Organism o) {
         Random random = new Random();
@@ -67,9 +72,5 @@ public class World {
         );
     }
 
-    private void populateMapWithEmptyEntries() {
-        for (int i = 0; i < 100; i++) {
-            getWorldMap().put(i, null);
-        }
-    }
+
 }

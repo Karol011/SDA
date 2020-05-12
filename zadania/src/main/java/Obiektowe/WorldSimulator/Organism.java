@@ -18,10 +18,9 @@ public abstract class Organism implements Comparable {
     protected int speed;
     private boolean isAdded = false;
 
-    public Organism(final World world, final int strength, final int speed) {
+    public Organism(final World world, final int strength) {
         this.world = world;
         this.strength = strength;
-        this.speed = speed;
         getWorld().getOrganisms().add(this);
     }
 
@@ -59,6 +58,16 @@ public abstract class Organism implements Comparable {
                 fight(firstOrganism, secondOrganism, organismPosition);
             }
         }
+    }
+
+    public int getOrganismPosition() {
+        int currentOrganismPosition = 0;
+        for (Map.Entry<Integer, Organism> entry : getWorld().getWorldMap().entries()) {
+            if (entry.getValue() != null && entry.getValue().equals(this)) {
+                currentOrganismPosition = entry.getKey();
+            }
+        }
+        return currentOrganismPosition;
     }
 
     private boolean checkIfOrganismAreSameType(Organism firstOrganism, Organism secondOrganism) {
