@@ -22,10 +22,9 @@ public abstract class Plant extends Organism implements Comparable {
     }
 
     protected void spread() {
-        final double CHANCE_TO_SPREAD = 0.5;
+        final double CHANCE_TO_SPREAD = 0.25;
         int organismPosition = this.getOrganismPosition();
-        if (Math.random() > CHANCE_TO_SPREAD) {
-            //todo create new plant nearby
+        if (Math.random() <= CHANCE_TO_SPREAD) {
             createNewPlantNearby(organismPosition, this);
         }
     }
@@ -64,16 +63,18 @@ public abstract class Plant extends Organism implements Comparable {
         if (organismPosition + newPosition >= MIN_WORLD_MAP_POSITION &&
                 organismPosition + newPosition <= MAX_WORLD_MAP_POSITION) {
             System.out.println(this.toString() + " is spreading at "+ (organismPosition+newPosition));
-            getWorld().getWorldMap().put(organismPosition + newPosition, definePlantTypeAndCreateIt(plant));
+            getGetWorld().getWorldMap().put(organismPosition + newPosition, definePlantTypeAndCreateIt(plant));
         }
     }
 
     private Plant definePlantTypeAndCreateIt(Organism plant) {
         if (plant instanceof Grass) {
-            return new Grass(world);
+            return new Grass(getWorld);
         }
-        else  {
-            return new Belladona(world);
+        if (plant instanceof SowThistle) {
+            return new SowThistle(getWorld);
+        } else {
+            throw new PlantTypeNotFoundException("plant type not found");
         }
     }
 

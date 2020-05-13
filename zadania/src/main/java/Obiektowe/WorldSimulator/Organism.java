@@ -13,15 +13,15 @@ import java.util.*;
 @Data
 public abstract class Organism implements Comparable {
 
-    protected World world;
+    protected World getWorld;
     protected int strength;
     protected int speed;
     private boolean isAdded = false;
 
     public Organism(final World world, final int strength) {
-        this.world = world;
+        this.getWorld = world;
         this.strength = strength;
-        getWorld().getOrganisms().add(this);
+        getGetWorld().getOrganisms().add(this);
     }
 
     protected void action() {
@@ -31,13 +31,13 @@ public abstract class Organism implements Comparable {
 
     private void checkIfOrganismWasAddedToWorldMap() {
         if (!isAdded) {
-            getWorld().addOrganismToWorldMap(this);
+            getGetWorld().addOrganismToWorldMap(this);
             isAdded = true;
         }
     }
 
     private void checkIfAnyPoolHasMoreThanOneOrganismOnIt() {
-        for (Map.Entry<Integer, Collection<Organism>> entry : getWorld().getWorldMap().asMap().entrySet()) {
+        for (Map.Entry<Integer, Collection<Organism>> entry : getGetWorld().getWorldMap().asMap().entrySet()) {
             Collection<Organism> organisms = entry.getValue();
             if (organisms.size() > 1) {
                 collision(entry);
@@ -62,7 +62,7 @@ public abstract class Organism implements Comparable {
 
     public int getOrganismPosition() {
         int currentOrganismPosition = 0;
-        for (Map.Entry<Integer, Organism> entry : getWorld().getWorldMap().entries()) {
+        for (Map.Entry<Integer, Organism> entry : getGetWorld().getWorldMap().entries()) {
             if (entry.getValue() != null && entry.getValue().equals(this)) {
                 currentOrganismPosition = entry.getKey();
             }
@@ -78,14 +78,14 @@ public abstract class Organism implements Comparable {
         Optional<Organism> newlyCreatedOrganism = Optional.empty();
 
         if (firstOrganism instanceof Antelope) {
-            newlyCreatedOrganism = Optional.of(new Antelope(getWorld()));
+            newlyCreatedOrganism = Optional.of(new Antelope(getGetWorld()));
             //todo randomly change position of newly created organism
         }
         if (firstOrganism instanceof Fox) {
-            newlyCreatedOrganism = Optional.of(new Fox(getWorld()));
+            newlyCreatedOrganism = Optional.of(new Fox(getGetWorld()));
         }
         if (newlyCreatedOrganism.isPresent()) {
-            getWorld().getWorldMap().put(worldMapPosition, newlyCreatedOrganism.get());
+            getGetWorld().getWorldMap().put(worldMapPosition, newlyCreatedOrganism.get());
 
             System.out.println("two organism of the same type collided at pool " + worldMapPosition +
                     " creating new " + newlyCreatedOrganism.get().toString());
@@ -102,8 +102,8 @@ public abstract class Organism implements Comparable {
             } else {
                 loser = firstOrganism;
             }
-            getWorld().getOrganisms().remove(loser);
-            getWorld().getWorldMap().remove(worldMapPosition, loser);
+            getGetWorld().getOrganisms().remove(loser);
+            getGetWorld().getWorldMap().remove(worldMapPosition, loser);
             System.out.println(
                     firstOrganism.toString() + " and " + secondOrganism.toString() +
                             " have fought at pool " + worldMapPosition +
@@ -114,6 +114,11 @@ public abstract class Organism implements Comparable {
     }
 
     protected abstract void draw();
+
+    @Override
+    public String toString() {
+        return "Organism{}";
+    }
 
     public int compareTo(final Object o) {
         if (o == null) {

@@ -35,14 +35,14 @@ public abstract class Animal extends Organism implements Comparable {
     protected void move() {
         int currentOrganismPosition = 0;
         int newOrganismPosition;
-        for (Map.Entry<Integer, Organism> entry : getWorld().getWorldMap().entries()) {
+        for (Map.Entry<Integer, Organism> entry : getGetWorld().getWorldMap().entries()) {
             if (entry.getValue() != null && entry.getValue().equals(this)) {
                 currentOrganismPosition = entry.getKey();
             }
         }
         newOrganismPosition = randomlyChangePosition(currentOrganismPosition);
-        getWorld().getWorldMap().remove(currentOrganismPosition, this);
-        getWorld().getWorldMap().put(newOrganismPosition, this);
+        getGetWorld().getWorldMap().remove(currentOrganismPosition, this);
+        getGetWorld().getWorldMap().put(newOrganismPosition, this);
     }
 
     protected int randomlyChangePosition(int currentOrganismPosition) {
