@@ -12,12 +12,14 @@ public class World {
     List<Organism> organisms;
     Multimap<Integer, Organism> worldMap;
     private static boolean wasPopulatedWithEmptyEntries = false;
+    private static int roundCounter = 1;
 
     public World() {
         this.organisms = new ArrayList<>();
         this.worldMap = ArrayListMultimap.create();
         populateMapWithEmptyEntries();
     }
+
     private void populateMapWithEmptyEntries() {
         for (int i = 0; i < 100; i++) {
             getWorldMap().put(i, null);
@@ -31,13 +33,14 @@ public class World {
     }
 
     public void makeTurn() {
-        System.out.println("\n ***** NEW ROUND ***** \n");
+        System.out.println("\n\n ***** ROUND no." + roundCounter + " ***** \n");
        /* for (Organism o : getOrganisms()) {
             o.action();
         }*/
         for (int i = 0; i < getOrganisms().size(); i++) {
             getOrganisms().get(i).action();
         }
+        roundCounter++;
     }
 
     protected void drawWorld() {

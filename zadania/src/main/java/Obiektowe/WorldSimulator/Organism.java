@@ -52,36 +52,28 @@ public abstract class Organism implements Comparable {
         if (organismList.size() == 3) {//null,organism1,organism2
             Organism firstOrganism = organismList.get(1);
             Organism secondOrganism = organismList.get(2);
-            if (checkIfOrganismAreSameType(firstOrganism, secondOrganism)) {
-                reproduce(firstOrganism, secondOrganism, organismPosition);
+            boolean fieldHasLessThanThreeOrganismOnIt = getWorld.getWorldMap().get(firstOrganism.getOrganismPosition()).size() < 4;
+            if (checkIfOrganismAreSameType(firstOrganism, secondOrganism) &&
+                    fieldHasLessThanThreeOrganismOnIt) {
+                reproduce(firstOrganism, organismPosition);
             } else {
                 fight(firstOrganism, secondOrganism, organismPosition);
             }
         }
     }
 
-    public int getOrganismPosition() {
-        int currentOrganismPosition = 0;
-        for (Map.Entry<Integer, Organism> entry : getGetWorld().getWorldMap().entries()) {
-            if (entry.getValue() != null && entry.getValue().equals(this)) {
-                currentOrganismPosition = entry.getKey();
-            }
-        }
-        return currentOrganismPosition;
-    }
-
     private boolean checkIfOrganismAreSameType(Organism firstOrganism, Organism secondOrganism) {
         return firstOrganism.getClass().equals(secondOrganism.getClass());
     }
 
-    private void reproduce(Organism firstOrganism, Organism secondOrganism, Integer worldMapPosition) {
+    private void reproduce(Organism organism, Integer worldMapPosition) {
         Optional<Organism> newlyCreatedOrganism = Optional.empty();
 
-        if (firstOrganism instanceof Antelope) {
+        if (organism instanceof Antelope) {
             newlyCreatedOrganism = Optional.of(new Antelope(getGetWorld()));
             //todo randomly change position of newly created organism
         }
-        if (firstOrganism instanceof Fox) {
+        if (organism instanceof Fox) {
             newlyCreatedOrganism = Optional.of(new Fox(getGetWorld()));
         }
         if (newlyCreatedOrganism.isPresent()) {
@@ -90,6 +82,7 @@ public abstract class Organism implements Comparable {
             System.out.println("two organism of the same type collided at pool " + worldMapPosition +
                     " creating new " + newlyCreatedOrganism.get().toString());
         }
+        //todo stop reproducing if 3 or more organism are on the same pool
     }
 
     private void fight(Organism firstOrganism, Organism secondOrganism, Integer worldMapPosition) {
@@ -113,7 +106,22 @@ public abstract class Organism implements Comparable {
 
     }
 
+
+    public int getOrganismPosition() {
+        int currentOrganismPosition = 0;
+        for (Map.Entry<Integer, Organism> entry : getGetWorld().getWorldMap().entries()) {
+            if (entry.getValue() != null && entry.getValue().equals(this)) {
+                currentOrganismPosition = entry.getKey();
+            }
+        }
+        return currentOrganismPosition;
+    }
+
     protected abstract void draw();
+
+    public Class<? extends Organism> defineOrganismClass(Organism o) {
+        return o.getClass();
+    }
 
     @Override
     public String toString() {

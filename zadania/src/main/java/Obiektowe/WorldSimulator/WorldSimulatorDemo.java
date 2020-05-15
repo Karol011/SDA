@@ -4,11 +4,9 @@ import Obiektowe.WorldSimulator.Animal.Antelope;
 import Obiektowe.WorldSimulator.Animal.Fox;
 import Obiektowe.WorldSimulator.Animal.Turtle;
 import Obiektowe.WorldSimulator.Plant.Grass;
-import Obiektowe.WorldSimulator.Plant.Plant;
 import Obiektowe.WorldSimulator.Plant.SowThistle;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class WorldSimulatorDemo {
 
@@ -17,6 +15,9 @@ public class WorldSimulatorDemo {
         Organism fox1 = new Fox(world);
         Organism fox2 = new Fox(world);
         Organism fox3 = new Fox(world);
+        /*Organism fox4 = new Fox(world);
+        Organism fox5 = new Fox(world);
+        Organism fox6 = new Fox(world);*/
         Organism antelope = new Antelope(world);
         Organism antelodpe = new Antelope(world);
         Organism antelosdpe = new Antelope(world);
@@ -28,8 +29,7 @@ public class WorldSimulatorDemo {
         Organism ghgh = new SowThistle(world);
 
 
-
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 7; i++) {
             world.makeTurn();
             world.drawWorld();
         }
