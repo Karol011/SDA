@@ -1,15 +1,13 @@
 package WzorceProjektowe.Singleton;
 
-import java.util.Optional;
-
 public class Singleton {
 
     public static Singleton INSTANCE = null;
-    String s;
+    String string;
 
     private Singleton() {
 
-        s = "Instance";
+        string = "Instance";
     }
 public static Singleton getInstance(){
     if (INSTANCE == null) {
@@ -24,8 +22,8 @@ public static Singleton getInstance(){
         Singleton x = Singleton.getInstance();
         Singleton y = Singleton.getInstance();
 
-        System.out.println(x.s);
-        System.out.println(y.s);
+        System.out.println(x.string);
+        System.out.println(y.string);
 
 
     }
